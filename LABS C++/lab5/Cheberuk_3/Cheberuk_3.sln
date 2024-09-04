@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cheberuk_3", "Cheberuk_3.vcxproj", "{58799D43-E521-4773-829E-C9EE3EED301A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58799D43-E521-4773-829E-C9EE3EED301A}.Debug|x64.ActiveCfg = Debug|x64
+		{58799D43-E521-4773-829E-C9EE3EED301A}.Debug|x64.Build.0 = Debug|x64
+		{58799D43-E521-4773-829E-C9EE3EED301A}.Debug|x86.ActiveCfg = Debug|Win32
+		{58799D43-E521-4773-829E-C9EE3EED301A}.Debug|x86.Build.0 = Debug|Win32
+		{58799D43-E521-4773-829E-C9EE3EED301A}.Release|x64.ActiveCfg = Release|x64
+		{58799D43-E521-4773-829E-C9EE3EED301A}.Release|x64.Build.0 = Release|x64
+		{58799D43-E521-4773-829E-C9EE3EED301A}.Release|x86.ActiveCfg = Release|Win32
+		{58799D43-E521-4773-829E-C9EE3EED301A}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8DB23E9E-4610-4FD4-9EA0-3700F2C47129}
+	EndGlobalSection
+EndGlobal

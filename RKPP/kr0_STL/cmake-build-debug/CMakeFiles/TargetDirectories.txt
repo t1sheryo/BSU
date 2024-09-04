@@ -1,0 +1,3 @@
+C:/proga/RKPP/kr0_STL/cmake-build-debug/CMakeFiles/kr0_STL.dir
+C:/proga/RKPP/kr0_STL/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/proga/RKPP/kr0_STL/cmake-build-debug/CMakeFiles/rebuild_cache.dir

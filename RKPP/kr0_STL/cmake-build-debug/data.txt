@@ -1,0 +1,6 @@
+minsk;big hotel;3
+Minsk;abobus hotel;5
+borisov;hotelyo de gooD;10
+dubai;burg-halifa;5
+rome;hotelyo de good;4
+minsk;minsk hotel;2

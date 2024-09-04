@@ -1,0 +1,12 @@
+Rashimsiy Nazar Andreevich,192020,Matan,10,Ag,5,Oimp,2,Ibg,5
+Maximenko Artem Maximovich,1014667,Matan,9,Ag,10,Oimp,2,Ibg,7
+Egorova Elizaveta Andreevna,2452525,Matan,2,Ag,2,Fizra,4,Ibg,7
+Pashuk Alesya Svyatoslavovna,4252672,Matan,3,Ag,7,Oimp,2,Ibg,8
+Kosmachev Daniil,4166731,Matan,1,Ag,1,Oimp,2,Ibg,5
+Belyavskiy Vladislav Alekseevich,135126,Matan,6,Ag,4,Oimp,2,Ibg,7
+Ivan Lasyi,754376,Matan,3,Ag,7,Oimp,10,Ibg,8
+Likholap Fedor Vladislavovich,912515,Matan,3,Ag,7,Oimp,3,Ibg,7
+Luk Yury Leonidovich,562362,Fizra,10,Ag,5,Oimp,8,Ibg,6
+Savitskaya Anna-Maria Alekseevna,226621,Matan,2,Ag,10,Oimp,6,Ibg,7
+Cheberuk Timofey Sergeevich,3627251,Matan,10,Ag,6,Oimp,8,Fizra,4
+Cheberuk Timofey Sergeevich,23820,Matan,9,Ag,1,Oimp,4,Ibg,0

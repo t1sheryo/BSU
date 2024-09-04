@@ -1,0 +1,4 @@
+﻿  lab2.cpp
+C:\Users\ilayz\OneDrive\Рабочий стол\labs\lab2\1.4\lab2.cpp(5,13): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+C:\Users\ilayz\OneDrive\Рабочий стол\labs\lab2\1.4\lab2.cpp(30,19): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  lab2.vcxproj -> C:\Users\ilayz\OneDrive\Рабочий стол\labs\lab2\1.4\x64\Debug\lab2.exe

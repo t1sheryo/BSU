@@ -1,0 +1,3 @@
+﻿  Cheberuk_24.cpp
+C:\Users\ilayz\OneDrive\Рабочий стол\labs\lab4\variant 24\Cheberuk_24\Cheberuk_24.cpp(38,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Cheberuk_24.vcxproj -> C:\Users\ilayz\OneDrive\Рабочий стол\labs\lab4\variant 24\Cheberuk_24\x64\Debug\Cheberuk_24.exe

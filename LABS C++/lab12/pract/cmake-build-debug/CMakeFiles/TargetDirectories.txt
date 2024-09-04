@@ -1,0 +1,3 @@
+C:/proga/lab12/pract/cmake-build-debug/CMakeFiles/pract.dir
+C:/proga/lab12/pract/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/proga/lab12/pract/cmake-build-debug/CMakeFiles/rebuild_cache.dir

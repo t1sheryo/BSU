@@ -1,0 +1,4 @@
+﻿  ConsoleApplication2.cpp
+C:\Users\ilayz\OneDrive\Рабочий стол\labs\lab2\1.4 working\ConsoleApplication2.cpp(4,13): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+C:\Users\ilayz\OneDrive\Рабочий стол\labs\lab2\1.4 working\ConsoleApplication2.cpp(32,29): warning C4244: =: преобразование "double" в "unsigned __int64", возможна потеря данных
+  ConsoleApplication2.vcxproj -> C:\Users\ilayz\OneDrive\Рабочий стол\labs\lab2\1.4 working\x64\Debug\ConsoleApplication2.exe

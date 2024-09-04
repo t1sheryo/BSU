@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-70caadfd395211dc7d4b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "TICTACTOE",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "TICTACTOE::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TICTACTOE-Debug-c59a9e3b47d4447dd1a5.json",
+					"name" : "TICTACTOE",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "TICTACTOE_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TICTACTOE_autogen-Debug-c0772b5f8ea5729dd5aa.json",
+					"name" : "TICTACTOE_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "TICTACTOE_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TICTACTOE_autogen_timestamp_deps-Debug-dd5ce198f8a5dde366e5.json",
+					"name" : "TICTACTOE_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/ilayz/OneDrive/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/proga/QT/TICTACTOE/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug",
+		"source" : "C:/Users/ilayz/OneDrive/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/proga/QT/TICTACTOE"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

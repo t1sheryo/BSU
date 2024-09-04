@@ -1,0 +1,4 @@
+﻿  variant 7.cpp
+C:\Users\ilayz\OneDrive\Рабочий стол\labs\lab3\task 7\variant 7\variant 7.cpp(44,13): warning C4552: "+": результат выражения не используется
+C:\Users\ilayz\OneDrive\Рабочий стол\labs\lab3\task 7\variant 7\variant 7.cpp(54,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  variant 7.vcxproj -> C:\Users\ilayz\OneDrive\Рабочий стол\labs\lab3\task 7\variant 7\x64\Debug\variant 7.exe

@@ -1,0 +1,4 @@
+﻿  1.4.cpp
+C:\Users\ilayz\OneDrive\Рабочий стол\labs\lab2\1.4(new)\1.4\1.4.cpp(4,13): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+C:\Users\ilayz\OneDrive\Рабочий стол\labs\lab2\1.4(new)\1.4\1.4.cpp(32,29): warning C4244: =: преобразование "double" в "unsigned __int64", возможна потеря данных
+  1.4.vcxproj -> C:\Users\ilayz\OneDrive\Рабочий стол\labs\lab2\1.4(new)\1.4\x64\Debug\1.4.exe
