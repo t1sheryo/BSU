@@ -1,0 +1,5 @@
+Vasya,dog,barsik,7,bulldog,70.9
+Petya,cat,3,american
+ian,frog,barsik,1,green
+vanya,dog,barsik,9,pitbull,49.1
+kolya,cat,busya,1,dutch

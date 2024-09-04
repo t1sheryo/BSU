@@ -1,0 +1,18 @@
+Query: 1:terapevt
+Patient: vasya - Time: 01:00
+Patient: Vasya - Time: 20:30
+----------------------------------------------
+Query: 2:vasya
+Patient: vasya - Visits: 2
+----------------------------------------------
+Query: 2:timofey
+Patient: timofey - Visits: 1
+----------------------------------------------
+Query: 3:
+Date: 01:00 - Doctor: TeRaPevt
+Date: 09:00 - Doctor: hirurg
+Date: 19:00 - Doctor: hirurg
+Date: 06:30 - Doctor: hiturG
+Date: 06:30 - Doctor: oftal'molog
+Date: 20:30 - Doctor: terapevt
+----------------------------------------------

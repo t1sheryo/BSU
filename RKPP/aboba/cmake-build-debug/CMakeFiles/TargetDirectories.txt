@@ -1,0 +1,3 @@
+C:/Users/timof/OneDrive/Рабочий стол/PROGA/RKPP/aboba/cmake-build-debug/CMakeFiles/aboba.dir
+C:/Users/timof/OneDrive/Рабочий стол/PROGA/RKPP/aboba/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/timof/OneDrive/Рабочий стол/PROGA/RKPP/aboba/cmake-build-debug/CMakeFiles/rebuild_cache.dir

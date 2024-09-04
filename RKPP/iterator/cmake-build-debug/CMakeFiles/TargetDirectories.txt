@@ -1,0 +1,3 @@
+C:/proga/RKPP/iterator/cmake-build-debug/CMakeFiles/iterator.dir
+C:/proga/RKPP/iterator/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/proga/RKPP/iterator/cmake-build-debug/CMakeFiles/rebuild_cache.dir

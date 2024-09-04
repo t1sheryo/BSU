@@ -1,0 +1,4 @@
+﻿  lab12.cpp
+C:\Users\timof\OneDrive\Рабочий стол\PROGA\LABS\lab12\lab12\lab12.cpp(75,10): warning C4858: discarding return value: The 'unique' algorithm returns the iterator past the last element that should be kept. You need to call container.erase(result, container.end()) afterwards.
+C:\Users\timof\OneDrive\Рабочий стол\PROGA\LABS\lab12\lab12\lab12.cpp(19,9): warning C4101: 'tmp': unreferenced local variable
+  lab12.vcxproj -> C:\Users\timof\OneDrive\Рабочий стол\PROGA\LABS\lab12\lab12\x64\Debug\lab12.exe

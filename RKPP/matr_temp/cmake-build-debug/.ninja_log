@@ -1,0 +1,10 @@
+# ninja log v5
+14	1112	7367112588601393	CMakeFiles/matrix_template.dir/Rational_implementation.cpp.obj	a03cc8c6957e2e87
+1	1623	7367112593692544	CMakeFiles/matrix_template.dir/main.cpp.obj	346a50c55cb8366c
+1623	2051	7367112597963510	matrix_template.exe	cd83ec7d836038f5
+5	1503	7367136937760653	CMakeFiles/matrix_template.dir/main.cpp.obj	346a50c55cb8366c
+1503	1807	7367136940801339	matrix_template.exe	cd83ec7d836038f5
+4	1092	7367137928097473	CMakeFiles/matrix_template.dir/main.cpp.obj	346a50c55cb8366c
+1093	1283	7367137930007981	matrix_template.exe	cd83ec7d836038f5
+16	1094	7367138158840646	CMakeFiles/matrix_template.dir/main.cpp.obj	346a50c55cb8366c
+1095	1289	7367138160781080	matrix_template.exe	cd83ec7d836038f5

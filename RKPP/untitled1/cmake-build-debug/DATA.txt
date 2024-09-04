@@ -1,0 +1,6 @@
+Vasya;terapevt;20:30
+Volodya;hirurg;19:00
+Timofey;oftal'molog;06:30
+vasya;TeRaPevt;01:00
+Alex;hiturG;06:30
+Тимофей;hirurg;09:00

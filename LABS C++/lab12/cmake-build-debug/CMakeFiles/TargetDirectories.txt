@@ -1,0 +1,3 @@
+C:/Users/timof/OneDrive/Рабочий стол/PROGA/C++/Clion projects/lab12/cmake-build-debug/CMakeFiles/lab12.dir
+C:/Users/timof/OneDrive/Рабочий стол/PROGA/C++/Clion projects/lab12/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/timof/OneDrive/Рабочий стол/PROGA/C++/Clion projects/lab12/cmake-build-debug/CMakeFiles/rebuild_cache.dir

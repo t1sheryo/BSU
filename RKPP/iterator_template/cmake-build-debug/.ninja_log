@@ -1,0 +1,8 @@
+# ninja log v5
+676	804	7342010584383453	iterator_template.exe	3a0013716492abad
+2	674	7342010583111807	CMakeFiles/iterator_template.dir/main.cpp.obj	1227b7692c09f010
+1	156	7349021387365702	build.ninja	6e759bed2a5e999c
+17	700	7349031999538062	CMakeFiles/iterator_template.dir/main.cpp.obj	1227b7692c09f010
+703	856	7349032001068408	iterator_template.exe	798926d95822397a
+18	701	7349050790606150	CMakeFiles/iterator_template.dir/main.cpp.obj	1227b7692c09f010
+705	834	7349050791906462	iterator_template.exe	798926d95822397a

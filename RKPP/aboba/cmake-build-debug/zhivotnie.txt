@@ -1,0 +1,8 @@
+Vasya,cat,Barsyk,20
+Kolya,cat,Lydvig,2
+Artem,dog,Bobik,4
+Vologda,fish,Kesha,8
+Kolya,dog,,4
+Martin,fish,,2
+Martin,fish,,2
+

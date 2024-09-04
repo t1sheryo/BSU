@@ -1,0 +1,8 @@
+23,Minsk,passengers,12:50,03:50
+1,moscow,passengers,00:00,12:11
+20,london,speedy,13:23,00:50
+17,paris,passengers,10:50,03:50
+10,new-york,speedy,02:20,10:12
+15,bishkek,speedy,14:00,21:00
+16,bishkek,speedy,12:00,18:00
+16,bishkek,speedy,13:00,04:00
