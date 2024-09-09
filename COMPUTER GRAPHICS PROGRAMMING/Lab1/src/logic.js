@@ -16,6 +16,7 @@ function updateColorDisplay(color) {
 
   const lab = rgbToLab(rgb.r, rgb.g, rgb.b);
   labValue.textContent = `lab(${(lab.l)}, ${lab.a}%, ${lab.b}%)`;
+  console.log(color);
 }
 
 function labToXyz(l, a, b) {
@@ -147,11 +148,17 @@ function updateOutputs() {
   const a = parseFloat(document.getElementById('a').value);
   const b = parseFloat(document.getElementById('b').value);
   
+  labValue.textContent = `lab(${(l)}, ${a}%, ${b}%)`;
   const [x, y, z] = labToXyz(l, a, b);
-  const rgbValue = xyzToRgb(x, y, z);
+  rgbValue = xyzToRgb(x, y, z);
   const hexColor = rgbToHex(rgb.r, rgb.g, rgb.b);
-  const hlsValue = rgbToHls(rgb.r, rgb.g, rgb.b);
+  hlsValue = rgbToHls(rgb.r, rgb.g, rgb.b);
+  updateColorDisplay(hexColor);
 }
+
+document.querySelectorAll('input[type="number"]').forEach(input => {
+  input.addEventListener('input', updateOutputs);
+});
 
 colorPicker.addEventListener('input', (event) => {
   const color = event.target.value;
