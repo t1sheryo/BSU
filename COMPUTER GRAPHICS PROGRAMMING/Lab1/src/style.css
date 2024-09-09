@@ -1,0 +1,41 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+input[type="color"] {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  margin-left: 35px;
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  display: block;
+}
+
+.color-box {
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  border: 1px solid #000;
+}
+
+.color-values p {
+  font-size: 16px;
+}
