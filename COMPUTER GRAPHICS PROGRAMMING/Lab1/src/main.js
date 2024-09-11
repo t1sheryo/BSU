@@ -12,6 +12,7 @@ const createWindow = () => {
   wind.setTitle('Color Models');
   wind.loadFile('src/index.html');
   wind.setMenuBarVisibility(false);
+  wind.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {
