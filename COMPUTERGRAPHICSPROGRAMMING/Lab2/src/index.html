@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Metadata Reader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Image Metadata Reader</h1>
+    <div class="container">
+        <!-- Добавление метки для input -->
+        <label for="fileInput">Choose a folder with images:</label>
+        <input type="file" id="fileInput" multiple webkitdirectory title="Select a folder that contains images.">
+        
+        <table id="fileTable">
+            <thead>
+                <tr>
+                    <th>File Name</th>
+                    <th>Dimensions (px)</th>
+                    <th>Resolution (dpi)</th>
+                    <th>Color Depth</th>
+                    <th>Compression</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
