@@ -3,6 +3,7 @@ const colorDisplay = document.getElementById('colorDisplay');
 const rgbValue = document.getElementById('rgbValue');
 const hlsValue = document.getElementById('hlsValue');
 const cmykValue = document.getElementById('cmykValue');
+const Warning = document.getElementById('Warning');
 
 document.getElementById('system-select').addEventListener('change', function() {
   const selectedValue = this.value;
@@ -30,10 +31,10 @@ function updateColorDisplay(color) {
 
   const cmyk = rgbToCmyk(rgb.r, rgb.g, rgb.b);
   cmykValue.textContent = `cmyk(${Math.round(cmyk.c)}, ${Math.round(cmyk.m)}, ${Math.round(cmyk.y)}, ${Math.round(cmyk.k)})`;
-  document.getElementById('c').value = Math.round(cmyk.c);
-  document.getElementById('m').value = Math.round(cmyk.m);
-  document.getElementById('y').value = Math.round(cmyk.y);
-  document.getElementById('k').value = Math.round(cmyk.k);
+  // document.getElementById('c').value = Math.round(cmyk.c);
+  // document.getElementById('m').value = Math.round(cmyk.m);
+  // document.getElementById('y').value = Math.round(cmyk.y);
+  // document.getElementById('k').value = Math.round(cmyk.k);
 }
 
 function updateOutputsCmyk() {
@@ -42,12 +43,9 @@ function updateOutputsCmyk() {
   let y = parseFloat(document.getElementById('y').value);
   let k = parseFloat(document.getElementById('k').value);
 
-  const rgbValueVar = cmykToRgb(c, m, y, k);
-  const hexValue = rgbToHex(rgbValueVar.r, rgbValueVar.g, rgbValueVar.b);
-
   const maxValue = 100, minValue = 0;
   if (c > maxValue || m > maxValue || y > maxValue || k > maxValue || c < minValue || m < minValue || y < minValue || k < minValue) {
-    alert("Not correct number! All parameters(c, m, y, k) are set to 0!");
+    Warning.innerText = "Not correct number! All parameters(c, m, y, k) are set to 0!";
     c = 0;  
     m = 0;
     y = 0;
@@ -69,7 +67,7 @@ function updateOutputsRgb() {
 
   const maxValue = 255, minValue = 0;
   if (r > maxValue || g > maxValue || b > maxValue || r < minValue || g < minValue || b < minValue) {
-    alert("Not correct number! All parameters(r, g, b) are set to 0!");
+    Warning.innerText = "Not correct number! All parameters(r, g, b) are set to 0!";
     r = 0;
     g = 0;
     b = 0;
@@ -90,7 +88,7 @@ function updateOutputsHls() {
 
   const maxValue = 100, minValue = 0;
   if (h > 360 || l > maxValue || s > maxValue || h < minValue || l < minValue || s < minValue) {
-    alert("Not correct number! All parameters(h, l, s) are set to 0!");
+    Warning.innerText = "Not correct number! All parameters(h, l, s) are set to 0!";
     h = 0;
     l = 0;
     s = 0;
