@@ -13,14 +13,44 @@
     <label for="colorPicker">Pick your color!</label>
     <input type="color" id="colorPicker" value="#FFFFFF">
 
-    <label for="c">c:</label>
-    <input type="number" id='c' min="0" max="100" value="0"> 
-    <label for="m">m:</label>
-    <input type="number" id='m' min="0" max="100" value="0"> 
-    <label for="y">y:</label>
-    <input type="number" id='y' min="0" max="100" value="0"> 
-    <label for="k">k:</label>
-    <input type="number" id='k' min="0" max="100" value="0"> 
+    <form>
+      <label for="system-select">Pick your color system!</label>
+      <select name="system" id="system-select">
+        <option value="">-- Pick system --</option>
+        <option value="rgb">RGB</option>
+        <option value="hls">HLS</option>
+        <option value="cmyk">CMYK</option>
+      </select>
+    </form>
+
+    <div id="rgbInputs" class="hidden">
+      <label for="r">R:</label>
+      <input type="number" id='r' min="0" max="255" value="0" class="inputValRgb"> 
+      <label for="g">G:</label>
+      <input type="number" id='g' min="0" max="255" value="0" class="inputValRgb"> 
+      <label for="b">B:</label>
+      <input type="number" id='b' min="0" max="255" value="0" class="inputValRgb">
+    </div>
+
+    <div id="hlsInputs" class="hidden">
+      <label for="h">H:</label>
+      <input type="number" id='h' min="0" max="360" value="0" class="inputValHls"> 
+      <label for="l">L:</label>
+      <input type="number" id='l' min="0" max="100" value="0" class="inputValHls"> 
+      <label for="s">S:</label>
+      <input type="number" id='s' min="0" max="100" value="0" class="inputValHls">
+    </div>
+
+    <div id="cmykInputs" class="hidden">
+      <label for="c">C:</label>
+      <input type="number" id='c' min="0" max="100" value="0" class="inputValCmyk"> 
+      <label for="m">M:</label>
+      <input type="number" id='m' min="0" max="100" value="0" class="inputValCmyk"> 
+      <label for="y">Y:</label>
+      <input type="number" id='y' min="0" max="100" value="0" class="inputValCmyk"> 
+      <label for="k">K:</label>
+      <input type="number" id='k' min="0" max="100" value="0" class="inputValCmyk">
+    </div>
 
     
     <div class="color-info">

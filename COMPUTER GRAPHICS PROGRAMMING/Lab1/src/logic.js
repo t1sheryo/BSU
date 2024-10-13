@@ -4,6 +4,21 @@ const rgbValue = document.getElementById('rgbValue');
 const hlsValue = document.getElementById('hlsValue');
 const cmykValue = document.getElementById('cmykValue');
 
+document.getElementById('system-select').addEventListener('change', function() {
+  const selectedValue = this.value;
+  document.getElementById('rgbInputs').classList.add('hidden');
+  document.getElementById('hlsInputs').classList.add('hidden');
+  document.getElementById('cmykInputs').classList.add('hidden');
+  
+  if (selectedValue === 'rgb') {
+    document.getElementById('rgbInputs').classList.remove('hidden');
+  } else if (selectedValue === 'hls') {
+    document.getElementById('hlsInputs').classList.remove('hidden');
+  } else if (selectedValue === 'cmyk') {
+    document.getElementById('cmykInputs').classList.remove('hidden');
+  }
+});
+
 function updateColorDisplay(color) {
   colorDisplay.style.backgroundColor = color;
 
@@ -20,6 +35,72 @@ function updateColorDisplay(color) {
   document.getElementById('y').value = Math.round(cmyk.y);
   document.getElementById('k').value = Math.round(cmyk.k);
 }
+
+function updateOutputsCmyk() {
+  let c = parseFloat(document.getElementById('c').value);
+  let m = parseFloat(document.getElementById('m').value);
+  let y = parseFloat(document.getElementById('y').value);
+  let k = parseFloat(document.getElementById('k').value);
+
+  const rgbValueVar = cmykToRgb(c, m, y, k);
+  const hexValue = rgbToHex(rgbValueVar.r, rgbValueVar.g, rgbValueVar.b);
+
+  const maxValue = 100, minValue = 0;
+  if (c > maxValue || m > maxValue || y > maxValue || k > maxValue || c < minValue || m < minValue || y < minValue || k < minValue) {
+    alert("Not correct number! All parameters(c, m, y, k) are set to 0!");
+    c = 0;  
+    m = 0;
+    y = 0;
+    k = 0;
+  }
+
+  const rgb = cmykToRgb(c, m, y, k);
+  const hexColor = rgbToHex(rgb.r, rgb.g, rgb.b);
+  updateColorDisplay(hexColor);
+}
+
+function updateOutputsRgb() {
+  let r = parseFloat(document.getElementById('r').value);
+  let g = parseFloat(document.getElementById('g').value);
+  let b = parseFloat(document.getElementById('b').value);
+
+  const hexValue = rgbToHex(r, g, b);
+  updateColorDisplay(hexValue);
+
+  const maxValue = 255, minValue = 0;
+  if (r > maxValue || g > maxValue || b > maxValue || r < minValue || g < minValue || b < minValue) {
+    alert("Not correct number! All parameters(r, g, b) are set to 0!");
+    r = 0;
+    g = 0;
+    b = 0;
+  }
+
+  //const rgb = cmykToRgb(c, m, y, k);
+  const hexColor = rgbToHex(r, g, b);
+  updateColorDisplay(hexColor);
+}
+
+function updateOutputsHls() {
+  let h = parseFloat(document.getElementById('h').value);
+  let l = parseFloat(document.getElementById('l').value);
+  let s = parseFloat(document.getElementById('s').value);
+
+  const hexValue = hlsToHex(h, l, s);
+  updateColorDisplay(hexValue);
+
+  const maxValue = 100, minValue = 0;
+  if (h > 360 || l > maxValue || s > maxValue || h < minValue || l < minValue || s < minValue) {
+    alert("Not correct number! All parameters(h, l, s) are set to 0!");
+    h = 0;
+    l = 0;
+    s = 0;
+  }
+
+  //const rgb = cmykToRgb(c, m, y, k);
+  const hexColor = hlsToHex(h, l, s);
+  updateColorDisplay(hexColor);
+}
+
 
 function rgbToCmyk(r, g, b) {
 
@@ -96,28 +177,55 @@ function cmykToRgb(c, m, y, k) {
   return { r, g, b };
 }
 
-function updateOutputs() {
-  const c = parseFloat(document.getElementById('c').value);
-  const m = parseFloat(document.getElementById('m').value);
-  const y = parseFloat(document.getElementById('y').value);
-  const k = parseFloat(document.getElementById('k').value);
+function hlsToHex(h, l, s) {
+  h /= 360;
+  l /= 100;
+  s /= 100;
 
-  const maxValue = 100, minValue = 0;
-  if (c > maxValue || m > maxValue || y > maxValue || k > maxValue || c < minValue || m < minValue || y < minValue || k < minValue) {
-    alert("Not correct number! All parameters(c, m, y, k) are set to 0!");
-    c = 0;
-    m = 0;
-    y = 0;
-    k = 0;
+  let r, g, b;
+
+  if (s === 0) {
+    r = g = b = l;
+  } else {
+    const hueToRgb = (p, q, t) => {
+      if (t < 0) t += 1;
+      if (t > 1) t -= 1;
+      if (t < 1/6) return p + (q - p) * 6 * t;
+      if (t < 1/2) return q;
+      if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+      return p;
+    };
+
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+
+    r = hueToRgb(p, q, h + 1/3);
+    g = hueToRgb(p, q, h);
+    b = hueToRgb(p, q, h - 1/3);
   }
 
-  const rgb = cmykToRgb(c, m, y, k);
-  const hexColor = rgbToHex(rgb.r, rgb.g, rgb.b);
-  updateColorDisplay(hexColor);
+  const toHex = x => {
+    const hex = Math.round(x * 255).toString(16);
+    return hex.length === 1 ? '0' + hex : hex;
+  };
+
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 }
 
-document.querySelectorAll('input[type="number"]').forEach(input => {
-  input.addEventListener('input', updateOutputs);
+// document.querySelectorAll('input[type="number"]').forEach(input => {
+//   input.addEventListener('input', updateOutputs);
+// });
+
+document.querySelectorAll('.inputValRgb').forEach(element => {
+  element.addEventListener('input', updateOutputsRgb)
+});
+
+document.querySelectorAll('.inputValHls').forEach(element => {
+  element.addEventListener('input', updateOutputsHls)
+});
+
+document.querySelectorAll('.inputValCmyk').forEach(element => {
+  element.addEventListener('input', updateOutputsCmyk)
 });
 
 colorPicker.addEventListener('input', (event) => {
@@ -126,4 +234,6 @@ colorPicker.addEventListener('input', (event) => {
 });
 
 updateColorDisplay(colorPicker.value);
-updateOutputs();
+updateOutputsRgb();
+updateOutputsHls();
+updateOutputsCmyk();
