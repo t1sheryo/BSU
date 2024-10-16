@@ -1,0 +1,7 @@
+﻿  Lab1.cpp
+C:\proga\BSU\MV\Lab1\Lab1.cpp(40,28): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+C:\proga\BSU\MV\Lab1\Lab1.cpp(40,28): warning C4244:         with
+C:\proga\BSU\MV\Lab1\Lab1.cpp(40,28): warning C4244:         [
+C:\proga\BSU\MV\Lab1\Lab1.cpp(40,28): warning C4244:             _Ty=double
+C:\proga\BSU\MV\Lab1\Lab1.cpp(40,28): warning C4244:         ]
+  Lab1.vcxproj -> C:\proga\BSU\MV\Lab1\x64\Debug\Lab1.exe
