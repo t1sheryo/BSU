@@ -4,6 +4,7 @@ const jpeg = require('jpeg-js');
 const pngjs = require('pngjs').PNG;
 const bmp = require('bmp-js');
 const tiff = require('utif');
+const exif = require('exif-js');  // Для работы с EXIF
 
 // Добавляем обработчик для input элемента
 document.getElementById('fileInput').addEventListener('change', handleFileSelect);
@@ -74,13 +75,25 @@ function handleJPEG(file, fileName) {
     reader.onload = function(event) {
         const data = event.target.result;
         const jpegData = jpeg.decode(new Uint8Array(data), true);
+
+        let resolution = 'N/A'; // По умолчанию N/A
+        try {
+            const exifData = exif.readFromBinaryFile(data.buffer);
+            if (exifData && exifData.XResolution && exifData.YResolution) {
+                resolution = `${exifData.XResolution}x${exifData.YResolution} dpi`;
+            }
+        } catch (err) {
+            console.log('No EXIF data for resolution.');
+        }
+
         const fileInfo = {
             name: fileName,
             dimensions: `${jpegData.width}x${jpegData.height}`,
-            resolution: 'N/A', // EXIF данные могут быть добавлены при необходимости
-            colorDepth: jpegData.components * 8,
+            resolution: resolution,
+            colorDepth: jpegData.components * 8, // 8 бит на компонент (например, RGB = 24 бит)
             compression: 'JPEG Compression'
         };
+        console.log('JPEG file info:', fileInfo);  // Логирование для отладки
         addRowToTable(fileInfo);
     };
     reader.readAsArrayBuffer(file);
@@ -93,14 +106,27 @@ function handlePNG(file, fileName) {
         const data = new Uint8Array(event.target.result);
         const png = new pngjs();
         png.parse(data, function(error, pngData) {
-            if (error) throw error;
+            if (error) {
+                console.log('Error parsing PNG:', error);
+                return;
+            }
+
+            // Проверка на наличие данных о разрешении (dpi)
+            let resolution = 'N/A';
+            if (pngData.pHYs) {
+                const dpiX = pngData.pHYs.ppuX / 39.3701; // конвертация из пикселей на метр в DPI
+                const dpiY = pngData.pHYs.ppuY / 39.3701;
+                resolution = `${Math.round(dpiX)}x${Math.round(dpiY)} dpi`;
+            }
+
             const fileInfo = {
                 name: fileName,
                 dimensions: `${pngData.width}x${pngData.height}`,
-                resolution: 'N/A',
+                resolution: resolution,
                 colorDepth: pngData.depth * pngData.channels,
                 compression: 'Deflate (PNG)'
             };
+            console.log('PNG file info:', fileInfo);  // Логирование для отладки
             addRowToTable(fileInfo);
         });
     };
@@ -117,10 +143,11 @@ function handleGIF(file, fileName) {
         const fileInfo = {
             name: fileName,
             dimensions: `${parser.width}x${parser.height}`,
-            resolution: 'N/A',
-            colorDepth: '8-bit (GIF)',
+            resolution: 'N/A', // GIF не содержит DPI
+            colorDepth: '8-bit (GIF)', // 8-битная палитра
             compression: 'LZW Compression (GIF)'
         };
+        console.log('GIF file info:', fileInfo);  // Логирование для отладки
         addRowToTable(fileInfo);
     };
     reader.readAsArrayBuffer(file);
@@ -132,13 +159,15 @@ function handleBMP(file, fileName) {
     reader.onload = function(event) {
         const data = event.target.result;
         const bmpData = bmp.decode(new Uint8Array(data));
+
         const fileInfo = {
             name: fileName,
             dimensions: `${bmpData.width}x${bmpData.height}`,
-            resolution: 'N/A',
-            colorDepth: bmpData.bitPP,
+            resolution: 'N/A', // BMP обычно не содержит DPI
+            colorDepth: bmpData.bitPP, // Глубина цвета в битах на пиксель
             compression: 'None (BMP)'
         };
+        console.log('BMP file info:', fileInfo);  // Логирование для отладки
         addRowToTable(fileInfo);
     };
     reader.readAsArrayBuffer(file);
@@ -153,13 +182,21 @@ function handleTIFF(file, fileName) {
         const firstPage = tiffData[0]; // Первое изображение в TIFF (многослойные файлы)
         const width = firstPage.width;
         const height = firstPage.height;
+
+        // Проверка на наличие разрешения
+        let resolution = 'N/A';
+        if (firstPage.XResolution && firstPage.YResolution) {
+            resolution = `${firstPage.XResolution}x${firstPage.YResolution} dpi`;
+        }
+
         const fileInfo = {
             name: fileName,
             dimensions: `${width}x${height}`,
-            resolution: `${firstPage.XResolution}x${firstPage.YResolution} dpi`,
-            colorDepth: firstPage.bitsPerSample[0],
+            resolution: resolution,
+            colorDepth: firstPage.bitsPerSample[0], // Глубина цвета (на канал)
             compression: 'TIFF Compression (LZW/None, etc.)'
         };
+        console.log('TIFF file info:', fileInfo);  // Логирование для отладки
         addRowToTable(fileInfo);
     };
     reader.readAsArrayBuffer(file);

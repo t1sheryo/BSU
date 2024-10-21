@@ -11,6 +11,7 @@
   "dependencies": {
     "bmp-js": "^0.1.0",
     "electron": "^32.2.0",
+    "exif-js": "^2.3.0",
     "jpeg-js": "^0.4.4",
     "omggif": "^1.0.10",
     "pngjs": "^7.0.0",
