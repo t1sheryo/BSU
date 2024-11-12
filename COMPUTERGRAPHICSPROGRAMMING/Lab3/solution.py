@@ -30,15 +30,20 @@ class ImageProcessingApp:
         file_path = filedialog.askopenfilename()
         if file_path:
             self.image = cv2.imread(file_path)
-            self.show_image(self.image)
+            # Проверяем, что изображение успешно загружено
+            if self.image is None:
+                print("Ошибка: не удалось загрузить изображение. Проверьте путь к файлу.")
+            else:
+                self.show_image(self.image)
 
     def show_image(self, img):
-        img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        img_pil = Image.fromarray(img_rgb)
-        img_tk = ImageTk.PhotoImage(img_pil)
+        if img is not None:
+            img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+            img_pil = Image.fromarray(img_rgb)
+            img_tk = ImageTk.PhotoImage(img_pil)
 
-        self.label.config(image=img_tk)
-        self.label.image = img_tk
+            self.label.config(image=img_tk)
+            self.label.image = img_tk
 
     def histogram_equalization(self):
         if self.image is not None:
@@ -46,6 +51,8 @@ class ImageProcessingApp:
             img_yuv[:, :, 0] = cv2.equalizeHist(img_yuv[:, :, 0])
             self.processed_image = cv2.cvtColor(img_yuv, cv2.COLOR_YUV2BGR)
             self.show_image(self.processed_image)
+        else:
+            print("Изображение не загружено.")
 
     def linear_contrast(self):
         if self.image is not None:
@@ -53,6 +60,8 @@ class ImageProcessingApp:
             max_val = np.max(self.image)
             self.processed_image = ((self.image - min_val) * (255 / (max_val - min_val))).astype(np.uint8)
             self.show_image(self.processed_image)
+        else:
+            print("Изображение не загружено.")
 
     def edge_detection(self):
         if self.image is not None:
@@ -60,6 +69,8 @@ class ImageProcessingApp:
             edges = cv2.Canny(gray, 100, 200)
             self.processed_image = cv2.cvtColor(edges, cv2.COLOR_GRAY2BGR)
             self.show_image(self.processed_image)
+        else:
+            print("Изображение не загружено.")
 
 
 if __name__ == "__main__":

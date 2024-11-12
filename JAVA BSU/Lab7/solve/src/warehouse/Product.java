@@ -5,6 +5,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 class Product implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int warehouseNumber;
     private int productCode;
     private String productName;
