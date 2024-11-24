@@ -32,13 +32,20 @@ public class WarehouseFile implements AutoCloseable {
         index.addIndex(product, position); // Store the position in the index
     }
 
-    public void displayAllProducts() throws IOException, ClassNotFoundException {
-        file.seek(0);
-        while (file.getFilePointer() < file.length()) {
-            Product product = readProductFromFile();
-            if (product != null) {
-                System.out.println(product);
+    public void displayAllProducts(){
+        try {
+            file.seek(0);
+            while (file.getFilePointer() < file.length()) {
+                Product product = readProductFromFile();
+                if (product != null) {
+                    System.out.println(product);
+                }
             }
+        }catch(IOException ex){
+            System.out.println(ex.getMessage());
+        }
+        catch (ClassNotFoundException ex){
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -56,6 +63,11 @@ public class WarehouseFile implements AutoCloseable {
 
     public Product findProductByWarehouseNumber(int warehouseNumber) throws IOException, ClassNotFoundException {
         Long position = index.getIndexByWarehouseNumber(warehouseNumber);
+        return position != null ? readProductAtPosition(position) : null;
+    }
+
+    public Product findProductByProductCode(int warehouseNumber) throws IOException, ClassNotFoundException {
+        Long position = index.getIndexByProductCode(warehouseNumber);
         return position != null ? readProductAtPosition(position) : null;
     }
 

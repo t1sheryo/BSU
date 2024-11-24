@@ -14,7 +14,6 @@ class Product implements Serializable {
     private int quantity;
     private double pricePerUnit;
 
-    // Конструктор
     public Product(int warehouseNumber, int productCode, String productName, Date arrivalDate, int shelfLifeDays, int quantity, double pricePerUnit) {
         this.warehouseNumber = warehouseNumber;
         this.productCode = productCode;

@@ -15,6 +15,9 @@ public class Main {
             System.out.println("Найденный товар: " + foundProduct);
 
             warehouseFile.deleteProductByWarehouseNumber(1);
+
+            Product deletedProduct = warehouseFile.findProductByWarehouseNumber(2);
+            System.out.println("Удаленный товар: " + deletedProduct);
         } catch (Exception e) {
             System.out.println("Произошла ошибка: " + e.getMessage());
         }
