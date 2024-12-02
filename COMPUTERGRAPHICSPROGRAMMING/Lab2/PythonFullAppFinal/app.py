@@ -1,7 +1,7 @@
 import os
 import tkinter as tk
-from tkinter import filedialog, ttk, messagebox
-from PIL import Image, ImageTk
+from tkinter import filedialog, ttk
+from PIL import Image
 
 def get_image_info(file_path):
     try:
@@ -36,6 +36,13 @@ def scan_directory(directory):
                     results.append(info)
     return results
 
+def open_file():
+    file_path = filedialog.askopenfilename(filetypes=[("Изображения", "*.jpg *.jpeg *.gif *.tif *.bmp *.png *.pcx")])
+    if file_path:
+        image_info = get_image_info(file_path)
+        if image_info:
+            display_info_table([image_info])
+
 def open_directory():
     directory = filedialog.askdirectory()
     if directory:
@@ -51,15 +58,18 @@ def display_info_table(info_list):
                                         info["Разрешение (dpi)"], info["Глубина цвета"],
                                         info["Сжатие"]))
 
-# создаем окно
 root = tk.Tk()
 root.title("Информация об изображениях")
 root.geometry("800x400")
 
 button_frame = tk.Frame(root)
 button_frame.pack(pady=10)
-open_button = tk.Button(button_frame, text="Выбрать папку с изображениями", command=open_directory)
-open_button.pack()
+
+open_file_button = tk.Button(button_frame, text="Выбрать файл", command=open_file)
+open_file_button.pack(side=tk.LEFT, padx=5)
+
+open_directory_button = tk.Button(button_frame, text="Выбрать папку с изображениями", command=open_directory)
+open_directory_button.pack(side=tk.LEFT, padx=5)
 
 columns = ("Имя файла", "Размер (пиксели)", "Разрешение (dpi)", "Глубина цвета", "Сжатие")
 tree = ttk.Treeview(root, columns=columns, show="headings")
