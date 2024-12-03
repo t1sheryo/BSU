@@ -60,7 +60,7 @@ def display_info_table(info_list):
 
 root = tk.Tk()
 root.title("Информация об изображениях")
-root.geometry("800x400")
+root.geometry("1000x600")
 
 button_frame = tk.Frame(root)
 button_frame.pack(pady=10)

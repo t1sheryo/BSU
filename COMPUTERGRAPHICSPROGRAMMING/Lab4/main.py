@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import ttk, Canvas
 import math
 
-# Алгоритмы
 def step_by_step(x1, y1, x2, y2, canvas):
     dx, dy = x2 - x1, y2 - y1
     steps = max(abs(dx), abs(dy))
@@ -47,7 +46,6 @@ def bresenham_circle(cx, cy, r, canvas):
             y -= 1
         x += 1
 
-# Интерфейс
 def draw_algorithm():
     x1 = int(entry_x1.get())
     y1 = int(entry_y1.get())
@@ -76,7 +74,6 @@ def draw_algorithm():
 
 
 def casteljau(points, t):
-    """Рекурсивный алгоритм Кастла-Питвея для вычисления точки на кривой."""
     if len(points) == 1:
         return points[0]
     new_points = [
@@ -87,9 +84,8 @@ def casteljau(points, t):
 
 
 def draw_casteljau(control_points, canvas):
-    """Отрисовка кривой с использованием алгоритма Кастла-Питвея."""
     canvas.delete("all")
-    steps = 100  # количество шагов для генерации кривой
+    steps = 100
     for i in range(steps):
         t1 = i / steps
         t2 = (i + 1) / steps
@@ -105,9 +101,7 @@ def parse_control_points(entry):
         return None
 
 def wu_line(x1, y1, x2, y2, canvas):
-    """Реализация алгоритма Ву для сглаживания линий."""
     def plot(x, y, c):
-        # Рисование пикселя с интенсивностью c
         intensity = int(255 * (1 - c))
         color = f"#{intensity:02x}{intensity:02x}{intensity:02x}"
         canvas.create_oval(x, y, x + 1, y + 1, outline=color, fill=color)
