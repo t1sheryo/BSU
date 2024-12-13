@@ -1,61 +1,61 @@
 import matplotlib.pyplot as plt
 from shapely.geometry import LineString, Polygon
-import tkinter as tk
-from tkinter import filedialog, simpledialog
-import csv
+from shapely.geometry.polygon import orient
+from shapely.validation import explain_validity
+from tkinter import Tk, filedialog, Button, Label, OptionMenu, StringVar
 
-def load_data_from_file():
-    file_path = filedialog.askopenfilename(filetypes=[("CSV Files", "*.csv"), ("Text Files", "*.txt")])
-    if not file_path:
-        return None, None
-
-    segments = []
-    clipping_window = []
-
+def read_input_file(file_path):
     with open(file_path, 'r') as file:
-        reader = csv.reader(file)
-        for row in reader:
-            if row[0].lower() == "segment":
-                segments.append([(float(row[1]), float(row[2])), (float(row[3]), float(row[4]))])
-            elif row[0].lower() == "clippingwindow":
-                clipping_window.append((float(row[1]), float(row[2])))
+        lines = file.readlines()
 
+    n = int(lines[0])
+    segments = [
+        [(float(x1), float(y1)), (float(x2), float(y2))]
+        for x1, y1, x2, y2 in (line.split() for line in lines[1:n + 1])
+    ]
+    x_min, y_min, x_max, y_max = map(float, lines[n + 1].split())
+    clipping_window = [(x_min, y_min), (x_max, y_min), (x_max, y_max), (x_min, y_max), (x_min, y_min)]
     return segments, clipping_window
 
-def manual_input():
-    segments = []
-    clipping_window = []
+def validate_and_prepare_polygon(polygon):
+    polygon = orient(Polygon(polygon), sign=1.0)
+    if not polygon.is_valid:
+        print(f"Invalid geometry: {explain_validity(polygon)}")
+        polygon = polygon.buffer(0)
+    return polygon
 
-    num_segments = simpledialog.askinteger("Input", "Enter the number of line segments:")
-    for i in range(num_segments):
-        x1 = simpledialog.askfloat(f"Segment {i+1}", "Enter start x:")
-        y1 = simpledialog.askfloat(f"Segment {i+1}", "Enter start y:")
-        x2 = simpledialog.askfloat(f"Segment {i+1}", "Enter end x:")
-        y2 = simpledialog.askfloat(f"Segment {i+1}", "Enter end y:")
-        segments.append([(x1, y1), (x2, y2)])
+def midpoint_algorithm(segment, clipping_window):
+    line = LineString(segment)
+    clip_polygon = Polygon(clipping_window)
+    result = line.intersection(clip_polygon)
+    if result.is_empty:
+        return None
+    return list(result.coords)
 
-    num_clipping_points = simpledialog.askinteger("Input", "Enter the number of points for the clipping window:")
-    for i in range(num_clipping_points):
-        x = simpledialog.askfloat(f"Point {i+1}", "Enter x:")
-        y = simpledialog.askfloat(f"Point {i+1}", "Enter y:")
-        clipping_window.append((x, y))
+def polygon_clip(subject_polygon_coords, clipping_window_coords):
+    subject_polygon = validate_and_prepare_polygon(subject_polygon_coords)
+    clipping_polygon = validate_and_prepare_polygon(clipping_window_coords)
+    result = subject_polygon.intersection(clipping_polygon)
+    return result if not result.is_empty else None
 
-    return segments, clipping_window
-
-def draw(segments, clipping_window, clipped_segments):
+def draw(segments, clipping_window, clipped_segments, polygon_result):
     fig, ax = plt.subplots()
 
-    clipping_polygon = Polygon(clipping_window)
-    x, y = clipping_polygon.exterior.xy
-    ax.fill(x, y, alpha=0.3, color='green', label='Clipping Region')
+    x, y = zip(*clipping_window)
+    ax.fill(x, y, alpha=0.3, color='green', label='Clipping Window')
 
     for segment in segments:
-        x_vals, y_vals = zip(*segment)
-        ax.plot(x_vals, y_vals, color='blue', label='Original Segment')
+        x, y = zip(*segment)
+        ax.plot(x, y, color='blue', label='Original Segments')
 
     for segment in clipped_segments:
-        x_vals, y_vals = zip(*segment)
-        ax.plot(x_vals, y_vals, color='red', label='Clipped Segment')
+        if segment:
+            x, y = zip(*segment)
+            ax.plot(x, y, color='red', label='Clipped Segments')
+
+    if polygon_result:
+        x, y = polygon_result.exterior.xy
+        ax.plot(x, y, color='orange', label='Clipped Polygon')
 
     ax.set_xlim(0, 900)
     ax.set_ylim(0, 600)
@@ -63,49 +63,47 @@ def draw(segments, clipping_window, clipped_segments):
     ax.legend()
     plt.show()
 
-def clip_segment(segment, clipping_window):
-    line = LineString(segment)
-    clipping_polygon = Polygon(clipping_window)
+def process_data(file_path, algorithm_choice):
+    segments, clipping_window = read_input_file(file_path)
+    clipped_segments = []
 
-    clipped = line.intersection(clipping_polygon)
+    if algorithm_choice == "Midpoint Algorithm":
+        clipped_segments = [
+            midpoint_algorithm(segment, clipping_window) for segment in segments
+        ]
+    elif algorithm_choice == "Polygon Clipping":
+        polygon_coords = [(200, 200), (700, 200), (700, 500), (200, 500), (200, 200)]
+        polygon_result = polygon_clip(polygon_coords, clipping_window)
+        draw(segments, clipping_window, clipped_segments, polygon_result)
+        return
 
-    if clipped.is_empty:
-        return None
-
-    if isinstance(clipped, LineString):
-        return [(p[0], p[1]) for p in clipped.coords]
-
-    return None
+    draw(segments, clipping_window, clipped_segments, None)
 
 def main():
-    root = tk.Tk()
-    root.withdraw()  # Hide the main tkinter window
+    def select_file():
+        file_path = filedialog.askopenfilename(title="Выберите входной файл")
+        if file_path:
+            file_label.config(text=f"Выбран файл: {file_path}")
+            process_data(file_path, algorithm_var.get())
 
-    choice = simpledialog.askstring("Input", "Enter 'file' to load from file or 'manual' for manual input:")
-    if choice.lower() == 'file':
-        segments, clipping_window = load_data_from_file()
-    elif choice.lower() == 'manual':
-        segments, clipping_window = manual_input()
-    else:
-        print("Invalid choice")
-        return
+    root = Tk()
+    root.title("Выбор алгоритма отсечения")
+    root.geometry("400x200")
 
-    if not segments or not clipping_window:
-        print("No data provided.")
-        return
+    Label(root, text="Выберите алгоритм:", font=("Arial", 14)).pack(pady=10)
 
-    clipped_segments = []
-    for segment in segments:
-        clipped_segment = clip_segment(segment, clipping_window)
-        if clipped_segment:
-            clipped_segments.append(clipped_segment)
+    algorithm_var = StringVar(value="Midpoint Algorithm")
+    algorithms = ["Midpoint Algorithm", "Polygon Clipping"]
+    algorithm_menu = OptionMenu(root, algorithm_var, *algorithms)
+    algorithm_menu.pack(pady=10)
 
-    draw(segments, clipping_window, clipped_segments)
+    file_label = Label(root, text="Файл не выбран", font=("Arial", 10))
+    file_label.pack(pady=10)
+
+    select_button = Button(root, text="Выбрать файл", command=select_file)
+    select_button.pack(pady=10)
+
+    root.mainloop()
 
 if __name__ == "__main__":
     main()
-
-
-# [(50, 50), (350, 250)],
-#     [(100, 300), (500, 500)],
-#     [(200, 50), (800, 300)],
