@@ -1,109 +1,143 @@
 import matplotlib.pyplot as plt
-from shapely.geometry import LineString, Polygon
-from shapely.geometry.polygon import orient
-from shapely.validation import explain_validity
-from tkinter import Tk, filedialog, Button, Label, OptionMenu, StringVar
+from matplotlib.patches import Polygon, Rectangle
+from tkinter import Tk, filedialog, Button, Label, StringVar, OptionMenu
 
-def read_input_file(file_path):
-    with open(file_path, 'r') as file:
-        lines = file.readlines()
-
+# Чтение данных из файла
+def read_input(file_path):
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
     n = int(lines[0])
-    segments = [
-        [(float(x1), float(y1)), (float(x2), float(y2))]
-        for x1, y1, x2, y2 in (line.split() for line in lines[1:n + 1])
-    ]
-    x_min, y_min, x_max, y_max = map(float, lines[n + 1].split())
-    clipping_window = [(x_min, y_min), (x_max, y_min), (x_max, y_max), (x_min, y_max), (x_min, y_min)]
-    return segments, clipping_window
+    segments = [tuple(map(float, line.split())) for line in lines[1:n + 1]]
+    clip_window = tuple(map(float, lines[n + 1].split()))
+    return segments, clip_window
 
-def validate_and_prepare_polygon(polygon):
-    polygon = orient(Polygon(polygon), sign=1.0)
-    if not polygon.is_valid:
-        print(f"Invalid geometry: {explain_validity(polygon)}")
-        polygon = polygon.buffer(0)
-    return polygon
+# Алгоритм средней точки для отсечения отрезков
+def midpoint_clip(segment, window):
+    x_min, y_min, x_max, y_max = window
+    x1, y1, x2, y2 = segment
 
-def midpoint_algorithm(segment, clipping_window):
-    line = LineString(segment)
-    clip_polygon = Polygon(clipping_window)
-    result = line.intersection(clip_polygon)
-    if result.is_empty:
-        return None
-    return list(result.coords)
+    def inside(x, y):
+        return x_min <= x <= x_max and y_min <= y <= y_max
 
-def polygon_clip(subject_polygon_coords, clipping_window_coords):
-    subject_polygon = validate_and_prepare_polygon(subject_polygon_coords)
-    clipping_polygon = validate_and_prepare_polygon(clipping_window_coords)
-    result = subject_polygon.intersection(clipping_polygon)
-    return result if not result.is_empty else None
+    if inside(x1, y1) and inside(x2, y2):
+        return [(x1, y1), (x2, y2)]
 
-def draw(segments, clipping_window, clipped_segments, polygon_result):
+    mid_x, mid_y = (x1 + x2) / 2, (y1 + y2) / 2
+    if abs(x1 - x2) < 1e-5 and abs(y1 - y2) < 1e-5:  # Базовый случай для рекурсии
+        return []
+
+    if inside(mid_x, mid_y):
+        return midpoint_clip((x1, y1, mid_x, mid_y), window) + midpoint_clip((mid_x, mid_y, x2, y2), window)
+    return midpoint_clip((x1, y1, mid_x, mid_y), window) + midpoint_clip((mid_x, mid_y, x2, y2), window)
+
+# Алгоритм Сазерленда-Ходжмана для отсечения выпуклого многоугольника
+def sutherland_hodgman(polygon, window):
+    x_min, y_min, x_max, y_max = window
+
+    def clip_edge(points, edge_fn):
+        clipped = []
+        for i in range(len(points)):
+            p1, p2 = points[i - 1], points[i]
+            if edge_fn(p2):
+                if not edge_fn(p1):
+                    clipped.append(intersection(p1, p2, edge_fn))
+                clipped.append(p2)
+            elif edge_fn(p1):
+                clipped.append(intersection(p1, p2, edge_fn))
+        return clipped
+
+    def intersection(p1, p2, edge_fn):
+        x1, y1, x2, y2 = *p1, *p2
+        if edge_fn == left:
+            t = (x_min - x1) / (x2 - x1)
+            return x_min, y1 + t * (y2 - y1)
+        elif edge_fn == right:
+            t = (x_max - x1) / (x2 - x1)
+            return x_max, y1 + t * (y2 - y1)
+        elif edge_fn == bottom:
+            t = (y_min - y1) / (y2 - y1)
+            return x1 + t * (x2 - x1), y_min
+        elif edge_fn == top:
+            t = (y_max - y1) / (y2 - y1)
+            return x1 + t * (x2 - x1), y_max
+
+    left = lambda p: p[0] >= x_min
+    right = lambda p: p[0] <= x_max
+    bottom = lambda p: p[1] >= y_min
+    top = lambda p: p[1] <= y_max
+
+    edges = [left, right, bottom, top]
+    clipped_polygon = polygon[:]
+    for edge_fn in edges:
+        clipped_polygon = clip_edge(clipped_polygon, edge_fn)
+    return clipped_polygon
+
+# Визуализация результата
+def visualize(segments, clipped_segments, polygon, clipped_polygon, clip_window):
+    print("Polygon data:", polygon)  # Debug output
     fig, ax = plt.subplots()
+    ax.set_xlim(-10, 10)
+    ax.set_ylim(-10, 10)
 
-    x, y = zip(*clipping_window)
-    ax.fill(x, y, alpha=0.3, color='green', label='Clipping Window')
+    # Отображение окна отсечения
+    x_min, y_min, x_max, y_max = clip_window
+    ax.add_patch(Rectangle((x_min, y_min), x_max - x_min, y_max - y_min,
+                           edgecolor='blue', fill=False))
 
+    # Отображение исходных данных
     for segment in segments:
-        x, y = zip(*segment)
-        ax.plot(x, y, color='blue', label='Original Segments')
+        x1, y1, x2, y2 = segment
+        ax.plot([x1, x2], [y1, y2], 'r-', label="Исходный отрезок")
 
+    # Видимые части отрезков
     for segment in clipped_segments:
         if segment:
-            x, y = zip(*segment)
-            ax.plot(x, y, color='red', label='Clipped Segments')
+            x1, y1, x2, y2 = segment[0][0], segment[0][1], segment[1][0], segment[1][1]
+            ax.plot([x1, x2], [y1, y2], 'g-', label="Видимый отрезок")
 
-    if polygon_result:
-        x, y = polygon_result.exterior.xy
-        ax.plot(x, y, color='orange', label='Clipped Polygon')
+    # Многоугольники
+    if polygon:  # Проверка на пустоту полигональных данных
+        polygon_patch = Polygon(polygon, closed=True, fill=None, edgecolor='purple')
+        ax.add_patch(polygon_patch)
 
-    ax.set_xlim(0, 900)
-    ax.set_ylim(0, 600)
-    ax.set_aspect('equal', adjustable='box')
-    ax.legend()
+    if clipped_polygon:  # Проверка на пустоту отсечённого полигона
+        clipped_polygon_patch = Polygon(clipped_polygon, closed=True, fill=None, edgecolor='green')
+        ax.add_patch(clipped_polygon_patch)
+
     plt.show()
 
-def process_data(file_path, algorithm_choice):
-    segments, clipping_window = read_input_file(file_path)
-    clipped_segments = []
-
-    if algorithm_choice == "Midpoint Algorithm":
-        clipped_segments = [
-            midpoint_algorithm(segment, clipping_window) for segment in segments
-        ]
-    elif algorithm_choice == "Polygon Clipping":
-        polygon_coords = [(200, 200), (700, 200), (700, 500), (200, 500), (200, 200)]
-        polygon_result = polygon_clip(polygon_coords, clipping_window)
-        draw(segments, clipping_window, clipped_segments, polygon_result)
-        return
-
-    draw(segments, clipping_window, clipped_segments, None)
-
+# Окно выбора алгоритма и файла
 def main():
-    def select_file():
-        file_path = filedialog.askopenfilename(title="Выберите входной файл")
-        if file_path:
-            file_label.config(text=f"Выбран файл: {file_path}")
-            process_data(file_path, algorithm_var.get())
+    def open_file():
+        file_path.set(filedialog.askopenfilename(filetypes=[("Text files", "*.txt")]))
+
+    def run():
+        if not file_path.get():
+            print("Не выбран файл")
+            return
+
+        segments, clip_window = read_input(file_path.get())
+
+        if algo_var.get() == "Midpoint":
+            clipped_segments = [midpoint_clip(segment, clip_window) for segment in segments]
+            polygon, clipped_polygon = [], []
+        elif algo_var.get() == "Sutherland-Hodgman":
+            polygon = [(0, 0), (5, 0), (5, 5), (0, 5)]
+            clipped_polygon = sutherland_hodgman(polygon, clip_window)
+            clipped_segments = []
+        else:
+            print("Не выбран алгоритм")
+            return
+
+        visualize(segments, clipped_segments, polygon, clipped_polygon, clip_window)
 
     root = Tk()
-    root.title("Выбор алгоритма отсечения")
-    root.geometry("400x200")
+    root.title("Визуализация отсечения")
 
-    Label(root, text="Выберите алгоритм:", font=("Arial", 14)).pack(pady=10)
+    file_path = StringVar()
+    algo_var = StringVar(value="Выберите алгоритм")
 
-    algorithm_var = StringVar(value="Midpoint Algorithm")
-    algorithms = ["Midpoint Algorithm", "Polygon Clipping"]
-    algorithm_menu = OptionMenu(root, algorithm_var, *algorithms)
-    algorithm_menu.pack(pady=10)
+    Label(root, text="Выберите файл:").grid(row=0, column=0, padx=10, pady=10)
+    Button(root, text="Открыть", command=open_file).grid(row=0, column=1, padx=10, pady=10)
 
-    file_label = Label(root, text="Файл не выбран", font=("Arial", 10))
-    file_label.pack(pady=10)
-
-    select_button = Button(root, text="Выбрать файл", command=select_file)
-    select_button.pack(pady=10)
-
-    root.mainloop()
-
-if __name__ == "__main__":
-    main()
+    Label(root, text="Выберите алгоритм:").gr
