@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\proga\BSU\OS\Lectures\FibonacciSequence\build\CMakeFiles\eb15258fd52e5e61d931ecec8ec52f6a\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{D98D278E-24AD-3509-BDF5-74306EE14F30}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

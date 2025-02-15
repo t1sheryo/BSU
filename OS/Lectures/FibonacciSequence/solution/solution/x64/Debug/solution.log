@@ -1,0 +1,62 @@
+﻿Tests.obj : error LNK2005: main already defined in solution.obj
+libcpmtd.lib(_tolower.obj) : error LNK2001: unresolved external symbol _calloc_dbg
+libcpmtd.lib(locale.obj) : error LNK2001: unresolved external symbol _calloc_dbg
+libcpmtd.lib(wlocale.obj) : error LNK2001: unresolved external symbol _calloc_dbg
+libcpmtd.lib(xlocale.obj) : error LNK2001: unresolved external symbol _calloc_dbg
+fibonacci.obj : error LNK2001: unresolved external symbol _calloc_dbg
+Tests.obj : error LNK2001: unresolved external symbol _calloc_dbg
+gtest-all.obj : error LNK2001: unresolved external symbol _calloc_dbg
+gmock-all.obj : error LNK2001: unresolved external symbol _calloc_dbg
+libcpmtd.lib(xlocale.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(xwcsxfrm.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(StlCompareStringA.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(cerr.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(locale.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(StlLCMapStringA.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(wlocale.obj) : error LNK2001: unresolved external symbol _free_dbg
+gmock-all.obj : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(locale0.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(cin.obj) : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(cout.obj) : error LNK2001: unresolved external symbol _free_dbg
+fibonacci.obj : error LNK2001: unresolved external symbol _free_dbg
+solution.obj : error LNK2001: unresolved external symbol _free_dbg
+Tests.obj : error LNK2001: unresolved external symbol _free_dbg
+gtest-all.obj : error LNK2001: unresolved external symbol _free_dbg
+libcpmtd.lib(xlocale.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(xwcsxfrm.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(StlCompareStringA.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(cerr.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(locale.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(StlLCMapStringA.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(wlocale.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+gmock-all.obj : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(locale0.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(cin.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(cout.obj) : error LNK2001: unresolved external symbol _malloc_dbg
+fibonacci.obj : error LNK2001: unresolved external symbol _malloc_dbg
+solution.obj : error LNK2001: unresolved external symbol _malloc_dbg
+Tests.obj : error LNK2001: unresolved external symbol _malloc_dbg
+gtest-all.obj : error LNK2001: unresolved external symbol _malloc_dbg
+libcpmtd.lib(xtime.obj) : error LNK2001: unresolved external symbol _CrtDbgReport
+libcpmtd.lib(locale.obj) : error LNK2001: unresolved external symbol _CrtDbgReport
+libcpmtd.lib(wlocale.obj) : error LNK2001: unresolved external symbol _CrtDbgReport
+libcpmtd.lib(xlocale.obj) : error LNK2001: unresolved external symbol _CrtDbgReport
+gmock-all.obj : error LNK2001: unresolved external symbol _CrtDbgReport
+libcpmtd.lib(cin.obj) : error LNK2001: unresolved external symbol _CrtDbgReport
+libcpmtd.lib(cout.obj) : error LNK2001: unresolved external symbol _CrtDbgReport
+libcpmtd.lib(cerr.obj) : error LNK2001: unresolved external symbol _CrtDbgReport
+fibonacci.obj : error LNK2001: unresolved external symbol _CrtDbgReport
+solution.obj : error LNK2001: unresolved external symbol _CrtDbgReport
+Tests.obj : error LNK2001: unresolved external symbol _CrtDbgReport
+gtest-all.obj : error LNK2001: unresolved external symbol _CrtDbgReport
+gtest-all.obj : error LNK2019: unresolved external symbol _CrtSetDbgFlag referenced in function "public: __cdecl testing::internal::`anonymous namespace'::MemoryIsNotDeallocated::MemoryIsNotDeallocated(void)" (??0MemoryIsNotDeallocated@?A0xb832670a@internal@testing@@QEAA@XZ)
+gtest-all.obj : error LNK2019: unresolved external symbol _CrtSetReportFile referenced in function "public: int __cdecl testing::UnitTest::Run(void)" (?Run@UnitTest@testing@@QEAAHXZ)
+gtest-all.obj : error LNK2019: unresolved external symbol _CrtSetReportMode referenced in function "public: int __cdecl testing::UnitTest::Run(void)" (?Run@UnitTest@testing@@QEAAHXZ)
+libcpmtd.lib(_tolower.obj) : error LNK2019: unresolved external symbol _wcsdup_dbg referenced in function _Getctype
+libcpmtd.lib(xstrcoll.obj) : error LNK2001: unresolved external symbol _wcsdup_dbg
+libcpmtd.lib(xmbtowc.obj) : error LNK2019: unresolved external symbol _CrtDbgReportW referenced in function _Mbrtowc
+libcpmtd.lib(StlLCMapStringA.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libcpmtd.lib(StlCompareStringA.obj) : error LNK2001: unresolved external symbol _CrtDbgReportW
+libcpmtd.lib(locale.obj) : error LNK2019: unresolved external symbol _realloc_dbg referenced in function "private: static void __cdecl std::locale::_Locimp::_Locimp_Addfac(class std::locale::_Locimp *,class std::locale::facet *,unsigned __int64)" (?_Locimp_Addfac@_Locimp@locale@std@@CAXPEAV123@PEAVfacet@23@_K@Z)
+C:\proga\BSU\OS\Lectures\FibonacciSequence\solution\packages\gtest.1.7.0\build\native\..\..\\build\native\lib\Debug\gtestd.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\proga\BSU\OS\Lectures\FibonacciSequence\solution\x64\Debug\solution.exe : fatal error LNK1120: 10 unresolved externals

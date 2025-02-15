@@ -1,0 +1,106 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\proga\\BSU\\OS\\Lectures\\FibonacciSequence\\solution\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EB6C15E9-78B9-4C4E-9894-0DD42BC59C25}|solution.vcxproj|C:\\proga\\BSU\\OS\\Lectures\\FibonacciSequence\\solution\\solution.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EB6C15E9-78B9-4C4E-9894-0DD42BC59C25}|solution.vcxproj|solutionrelative:solution.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB6C15E9-78B9-4C4E-9894-0DD42BC59C25}|solution.vcxproj|C:\\proga\\BSU\\OS\\Lectures\\FibonacciSequence\\solution\\Tests.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EB6C15E9-78B9-4C4E-9894-0DD42BC59C25}|solution.vcxproj|solutionrelative:Tests.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB6C15E9-78B9-4C4E-9894-0DD42BC59C25}|solution.vcxproj|C:\\proga\\BSU\\OS\\Lectures\\FibonacciSequence\\solution\\fibonacci.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EB6C15E9-78B9-4C4E-9894-0DD42BC59C25}|solution.vcxproj|solutionrelative:fibonacci.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EB6C15E9-78B9-4C4E-9894-0DD42BC59C25}|solution.vcxproj|C:\\proga\\BSU\\OS\\Lectures\\FibonacciSequence\\solution\\fibonacci.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EB6C15E9-78B9-4C4E-9894-0DD42BC59C25}|solution.vcxproj|solutionrelative:fibonacci.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "fibonacci.cpp",
+              "DocumentMoniker": "C:\\proga\\BSU\\OS\\Lectures\\FibonacciSequence\\solution\\fibonacci.cpp",
+              "RelativeDocumentMoniker": "fibonacci.cpp",
+              "ToolTip": "C:\\proga\\BSU\\OS\\Lectures\\FibonacciSequence\\solution\\fibonacci.cpp",
+              "RelativeToolTip": "fibonacci.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-12T21:18:53.84Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "fibonacci.h",
+              "DocumentMoniker": "C:\\proga\\BSU\\OS\\Lectures\\FibonacciSequence\\solution\\fibonacci.h",
+              "RelativeDocumentMoniker": "fibonacci.h",
+              "ToolTip": "C:\\proga\\BSU\\OS\\Lectures\\FibonacciSequence\\solution\\fibonacci.h",
+              "RelativeToolTip": "fibonacci.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-02-12T21:18:13.748Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Tests.cpp",
+              "DocumentMoniker": "C:\\proga\\BSU\\OS\\Lectures\\FibonacciSequence\\solution\\Tests.cpp",
+              "RelativeDocumentMoniker": "Tests.cpp",
+              "ToolTip": "C:\\proga\\BSU\\OS\\Lectures\\FibonacciSequence\\solution\\Tests.cpp*",
+              "RelativeToolTip": "Tests.cpp*",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAYwFMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-12T21:17:53.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "solution.cpp",
+              "DocumentMoniker": "C:\\proga\\BSU\\OS\\Lectures\\FibonacciSequence\\solution\\solution.cpp",
+              "RelativeDocumentMoniker": "solution.cpp",
+              "ToolTip": "C:\\proga\\BSU\\OS\\Lectures\\FibonacciSequence\\solution\\solution.cpp*",
+              "RelativeToolTip": "solution.cpp*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-12T21:17:34.028Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

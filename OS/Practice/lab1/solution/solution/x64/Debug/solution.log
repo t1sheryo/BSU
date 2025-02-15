@@ -1,0 +1,3 @@
+﻿  solution.cpp
+C:\proga\BSU\OS\lab1\solution\solution.cpp(48,8): warning C4101: 'ThreadID': unreferenced local variable
+  solution.vcxproj -> C:\proga\BSU\OS\lab1\solution\x64\Debug\solution.exe

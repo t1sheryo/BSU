@@ -1,0 +1,4 @@
+C:/proga/BSU/OS/Lectures/FibonacciSequence/build/CMakeFiles/SeqPrinter.dir
+C:/proga/BSU/OS/Lectures/FibonacciSequence/build/CMakeFiles/FibonacciTests.dir
+C:/proga/BSU/OS/Lectures/FibonacciSequence/build/CMakeFiles/ALL_BUILD.dir
+C:/proga/BSU/OS/Lectures/FibonacciSequence/build/CMakeFiles/ZERO_CHECK.dir

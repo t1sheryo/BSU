@@ -1,0 +1,10 @@
+^C:\PROGA\BSU\OS\LECTURES\FIBONACCISEQUENCE\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/proga/BSU/OS/Lectures/FibonacciSequence -BC:/proga/BSU/OS/Lectures/FibonacciSequence/build --check-stamp-file C:/proga/BSU/OS/Lectures/FibonacciSequence/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
