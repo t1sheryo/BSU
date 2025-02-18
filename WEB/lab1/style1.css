@@ -1,0 +1,109 @@
+/* Общие стили */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 20px;
+}
+
+h1, h3 {
+  color: #444;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-top: 20px;
+  color: #d9534f; /* Акцентный цвет */
+}
+
+h3 {
+  font-size: 1.8em;
+  margin-top: 30px;
+  color: #5cb85c; /* Акцентный цвет */
+}
+
+p {
+  font-size: 1.1em;
+  margin: 15px 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  background: #fff;
+  margin: 10px 0;
+  padding: 10px;
+  border-left: 5px solid #5cb85c; /* Акцентный цвет */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для разделов */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для контактов и графика работы */
+.contact-info, .working-hours {
+  background: #f1f1f1;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.contact-info ul, .working-hours ul {
+  padding-left: 20px;
+}
+
+.contact-info ul li, .working-hours ul li {
+  background: none;
+  border-left: none;
+  padding: 5px 0;
+  box-shadow: none;
+}
+
+/* Стили для кнопок (если добавятся позже) */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #5cb85c;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.button:hover {
+  background: #4cae4c;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  h3 {
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  .container {
+    width: 100%;
+    padding: 10px;
+  }
+}

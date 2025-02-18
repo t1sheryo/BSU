@@ -1,0 +1,33 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+td:nth-child(3) {
+  background-color: #f2f2f2;
+}
+
+.vertical-merge {
+  background-color: #4CAF50;
+  color: white;
+}
+
+h1{
+  text-align: center;
+  color:#4CAF50;
+  font-size:xx-large;
+}
