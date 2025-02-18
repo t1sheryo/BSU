@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\proga\\BSU\\OS\\lab1\\solution\\",
+  "WorkspaceRootPath": "C:\\proga\\BSU\\OS\\Practice\\lab1\\solution\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3A732F00-A699-40CA-8C44-EAA5BC2D4F6C}|solution.vcxproj|C:\\proga\\BSU\\OS\\lab1\\solution\\solution.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{3A732F00-A699-40CA-8C44-EAA5BC2D4F6C}|solution.vcxproj|C:\\proga\\BSU\\OS\\Practice\\lab1\\solution\\solution.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3A732F00-A699-40CA-8C44-EAA5BC2D4F6C}|solution.vcxproj|solutionrelative:solution.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -40,11 +40,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "solution.cpp",
-              "DocumentMoniker": "C:\\proga\\BSU\\OS\\lab1\\solution\\solution.cpp",
+              "DocumentMoniker": "C:\\proga\\BSU\\OS\\Practice\\lab1\\solution\\solution.cpp",
               "RelativeDocumentMoniker": "solution.cpp",
-              "ToolTip": "C:\\proga\\BSU\\OS\\lab1\\solution\\solution.cpp",
+              "ToolTip": "C:\\proga\\BSU\\OS\\Practice\\lab1\\solution\\solution.cpp",
               "RelativeToolTip": "solution.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAD0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-10T08:30:11.235Z",
               "EditorCaption": ""
