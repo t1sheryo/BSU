@@ -1,6 +1,6 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <vector>
-#include <locale> // Для работы с локалью
+#include <locale>  // Р”Р»СЏ СЂР°Р±РѕС‚С‹ СЃ Р»РѕРєР°Р»РёР·Р°С†РёРµР№
 #include <conio.h>
 #include <windows.h>
 #include <string>
@@ -8,16 +8,17 @@
 
 int wmain() {
     SetConsoleOutputCP(CP_UTF8);
-    // Установка локали для поддержки широких символов
+    // РЈСЃС‚Р°РЅРѕРІРєР° Р»РѕРєР°Р»Рё РґР»СЏ РєРѕСЂСЂРµРєС‚РЅРѕР№ СЂР°Р±РѕС‚С‹ СЃ СЃРёРјРІРѕР»Р°РјРё
     std::locale::global(std::locale(""));
     
-    std::wstring exePath = L"C:\\proga\\BSU\\OS\\Practice\\lab2\\parent\\child\\x64\\Debug\\child.exe ";
+    //std::wstring exePath = L"C:\\proga\\BSU\\OS\\Practice\\lab2\\parent\\child\\x64\\Debug\\child.exe";
+    std::wstring exePath = L"child.exe";
 
     STARTUPINFO si;
     PROCESS_INFORMATION pi;
-    ZeroMemory(&si, sizeof(STARTUPINFO)); // заполняем все поля si нулями
+    ZeroMemory(&si, sizeof(STARTUPINFO)); // РћС‡РёСЃС‚РєР° СЃС‚СЂСѓРєС‚СѓСЂС‹ si
     si.cb = sizeof(STARTUPINFO);
-    si.dwX = 500;
+    si.dwX = 200;
     si.dwFlags = STARTF_USEPOSITION;
 
     int size = 0;
@@ -31,14 +32,14 @@ int wmain() {
     }
 
     std::wstringstream cmdStream;
-    cmdStream << exePath << size << L" ";
+    cmdStream << exePath << " " << size << L" ";
     for (const auto& num : arr) {
         cmdStream << num << L" ";
     }
     std::wstring cmdLine = cmdStream.str();
-    // т.к. str() возвращает константу, то мы создаем массив wchar_t чтобы передать его, т.к. он не const
+    // РџСЂРёРјРµС‡Р°РЅРёРµ: str() РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕРїРёСЋ СЃС‚СЂРѕРєРё, РїРѕСЌС‚РѕРјСѓ РІС‹ РјРѕР¶РµС‚Рµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РµРµ РєР°Рє РєРѕРЅСЃС‚Р°РЅС‚РЅСѓСЋ СЃСЃС‹Р»РєСѓ РЅР° wchar_t
     std::vector<wchar_t> cmdLineWorkingCopy(cmdLine.begin(), cmdLine.end());
-    cmdLineWorkingCopy.push_back(L'\0'); // добавляем нулевой терминатор как признак конца
+    cmdLineWorkingCopy.push_back(L'\0'); // Р”РѕР±Р°РІР»РµРЅРёРµ Р·Р°РІРµСЂС€Р°СЋС‰РµРіРѕ РЅСѓР»СЏ РґР»СЏ СЃС‚СЂРѕРєРё
 
     if (!CreateProcessW(
         NULL,

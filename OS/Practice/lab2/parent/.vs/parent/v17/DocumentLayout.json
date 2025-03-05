@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\proga\\BSU\\OS\\Practice\\lab2\\parent\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3450EF10-AE27-4B14-8AEE-B035031AE4F7}|child\\child.vcxproj|C:\\proga\\BSU\\OS\\Practice\\lab2\\parent\\child\\child.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{3450EF10-AE27-4B14-8AEE-B035031AE4F7}|child\\child.vcxproj|solutionrelative:child\\child.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{898971D5-7C0E-46B8-A138-93F8EAB4B62C}|parent\\parent.vcxproj|C:\\proga\\BSU\\OS\\Practice\\lab2\\parent\\parent\\parent.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{898971D5-7C0E-46B8-A138-93F8EAB4B62C}|parent\\parent.vcxproj|solutionrelative:parent\\parent.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3450EF10-AE27-4B14-8AEE-B035031AE4F7}|child\\child.vcxproj|C:\\proga\\BSU\\OS\\Practice\\lab2\\parent\\child\\child.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3450EF10-AE27-4B14-8AEE-B035031AE4F7}|child\\child.vcxproj|solutionrelative:child\\child.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,15 +22,11 @@
           "Children": [
             {
               "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Bookmark",
@@ -42,32 +38,36 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "child.cpp",
-              "DocumentMoniker": "C:\\proga\\BSU\\OS\\Practice\\lab2\\parent\\child\\child.cpp",
-              "RelativeDocumentMoniker": "child\\child.cpp",
-              "ToolTip": "C:\\proga\\BSU\\OS\\Practice\\lab2\\parent\\child\\child.cpp",
-              "RelativeToolTip": "child\\child.cpp",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-02-25T21:10:40.628Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "parent.cpp",
               "DocumentMoniker": "C:\\proga\\BSU\\OS\\Practice\\lab2\\parent\\parent\\parent.cpp",
               "RelativeDocumentMoniker": "parent\\parent.cpp",
               "ToolTip": "C:\\proga\\BSU\\OS\\Practice\\lab2\\parent\\parent\\parent.cpp",
               "RelativeToolTip": "parent\\parent.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADQAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-25T19:30:07.353Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "child.cpp",
+              "DocumentMoniker": "C:\\proga\\BSU\\OS\\Practice\\lab2\\parent\\child\\child.cpp",
+              "RelativeDocumentMoniker": "child\\child.cpp",
+              "ToolTip": "C:\\proga\\BSU\\OS\\Practice\\lab2\\parent\\child\\child.cpp",
+              "RelativeToolTip": "child\\child.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-25T21:10:40.628Z",
               "EditorCaption": ""
             }
           ]

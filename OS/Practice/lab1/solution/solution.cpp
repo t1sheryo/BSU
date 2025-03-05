@@ -76,7 +76,7 @@ int main()
 
 	DWORD stopCount = ResumeThread(worker);
 
-	WaitForSingleObject(worker, INFINITE);
+	//WaitForSingleObject(worker, INFINITE);
 	CloseHandle(worker);
 
 	return 0;

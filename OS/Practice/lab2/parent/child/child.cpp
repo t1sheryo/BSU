@@ -1,4 +1,4 @@
-#include <windows.h>
+п»ї#include <windows.h>
 #include <iostream>
 #include <vector>
 #include <sstream>
@@ -17,8 +17,8 @@ int wmain(int argc, wchar_t* argv[]) {
     std::locale::global(std::locale(""));
 
     if (argc < 2) {
-        std::wcerr << L"Ошибка: недостаточно аргументов!" << std::endl;
-        std::wcerr << L"Использование: Child.exe <размер_массива> <элемент1> <элемент2> ..." << std::endl;
+        std::wcerr << L"Error: Not enough arguments" << std::endl;
+        std::wcerr << L"Usage: Child.exe <array_size> <elements1> <element2> ..." << std::endl;
         return 1;
     }
 
@@ -29,7 +29,7 @@ int wmain(int argc, wchar_t* argv[]) {
     }
 
     if (arr.size() != size) {
-        std::wcerr << L"Ошибка: неверное количество элементов!" << std::endl;
+        std::wcerr << L"Error: incorrect arguments amount" << std::endl;
         return 1;
     }
 
@@ -41,13 +41,13 @@ int wmain(int argc, wchar_t* argv[]) {
         }
     }
 
-    std::wcout << L"Обработанный массив: ";
+    std::wcout << L"Processed array: ";
     for (const auto& num : result) {
         std::wcout << num << L" ";
     }
     std::wcout << std::endl;
 
-    std::wcout << L"Нажмите Enter для выхода...";
+    std::wcout << L"Press ENTER to quit...";
     std::wcin.ignore();
 
     return 0;

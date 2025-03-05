@@ -1,0 +1,3 @@
+﻿  child.cpp
+C:\proga\BSU\OS\Practice\lab2\parent\child\child.cpp(9,27): warning C4018: '<=': signed/unsigned mismatch
+  child.vcxproj -> C:\proga\BSU\OS\Practice\lab2\parent\Debug\child.exe
