@@ -1,7 +1,11 @@
-document.addEventListener('DOMContentLoaded', function () {
+function initValidation() {
     const form = document.getElementById('TestForm');
+    if (!form) {
+        console.log('Форма не найдена, повторная попытка...');
+        setTimeout(initValidation, 100);
+        return;
+    }
 
-    // Правила валидации для каждого поля
     const validationRules = {
         username: {
             required: true,
@@ -27,11 +31,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    // Функция для валидации одного поля
     function validateField(field) {
+        if (!field.name || !validationRules[field.name]) return true;
+        
         const rules = validationRules[field.name];
         const errorElement = document.getElementById(`${field.name}Error`);
         let isValid = true;
+
+        if (!errorElement) return true;
 
         if (rules.required && !field.value.trim()) {
             errorElement.textContent = 'Это поле обязательно для заполнения.';
@@ -58,25 +65,43 @@ document.addEventListener('DOMContentLoaded', function () {
         return isValid;
     }
 
-    // Валидация при изменении значения поля
     form.querySelectorAll('input').forEach(input => {
-        input.addEventListener('input', function () {
+        input.addEventListener('input', function() {
+            validateField(this);
+        });
+        
+        input.addEventListener('blur', function() {
             validateField(this);
         });
     });
 
-    // Валидация при отправке формы
-    form.addEventListener('submit', function (event) {
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
         let isFormValid = true;
-
-        form.querySelectorAll('input').forEach(input => {
-            if (!validateField(input)) {
+    
+        Object.keys(validationRules).forEach(fieldName => {
+            const field = form.querySelector(`[name="${fieldName}"]`);
+            if (field && !validateField(field)) {
                 isFormValid = false;
             }
         });
-
-        if (!isFormValid) {
-            event.preventDefault(); // Отмена отправки формы
+    
+        console.log('Проверка формы. Валидна:', isFormValid); // Добавьте для отладки
+        
+        if (isFormValid) {
+            console.log('Форма валидна, можно отправлять');
+            this.submit(); // Используем this вместо form для надежности
+        } else {
+            console.log('Форма содержит ошибки');
+            document.querySelectorAll('.error-message').forEach(el => {
+                if (el.textContent) {
+                    el.style.display = 'block';
+                    el.previousElementSibling.style.borderColor = 'red';
+                }
+            });
         }
     });
-});
+}
+
+// Запускаем валидацию после загрузки DOM
+document.addEventListener('DOMContentLoaded', initValidation);

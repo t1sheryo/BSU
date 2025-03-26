@@ -1,11 +1,12 @@
 export function CreateForm(formName, formData) {
     var form = document.createElement('form');
     form.name = formName;
+    form.id = formName;
 
     formData.forEach(elem => {
         var block = document.createElement('div');
 
-        if (elem.label) {
+        if (elem.label && elem.elemtype !== 'button' && elem.elemtype !== 'radio') {
             var label = document.createElement('label');
             label.textContent = elem.label;
             label.htmlFor = elem.name;
@@ -71,6 +72,23 @@ export function CreateForm(formName, formData) {
                 input.type = 'password';
                 input.name = elem.name;
                 input.id = elem.name;
+                if (elem.width) input.style.width = elem.width + 'px';
+                break;
+
+            case 'email':
+                input = document.createElement('input');
+                input.type = 'email';
+                input.name = elem.name;
+                input.id = elem.name;
+                if (elem.width) input.style.width = elem.width + 'px';
+                break;
+
+            case 'number':
+                input = document.createElement('input');
+                input.type = 'number';
+                input.name = elem.name;
+                input.id = elem.name;
+                if (elem.width) input.style.width = elem.width + 'px';
                 break;
 
             case 'date':
@@ -81,10 +99,11 @@ export function CreateForm(formName, formData) {
                 break;
 
             case 'button':
-                input = document.createElement('input');
-                input.type = 'button';
-                input.value = elem.value;
-                break;
+                    case 'button':
+                    input = document.createElement('button');
+                    input.type = (elem.value === 'Отправить') ? 'submit' : 'reset';
+                    input.textContent = elem.value;
+                    break;
 
             default:
                 console.error('Неизвестный тип элемента:', elem.elemtype);
@@ -93,6 +112,15 @@ export function CreateForm(formName, formData) {
 
         if (input) {
             block.appendChild(input);
+
+            if (elem.name) {
+                var errorElement = document.createElement('div');
+                errorElement.id = `${elem.name}Error`;
+                errorElement.className = 'error-message';
+                errorElement.style.color = 'red';
+                block.appendChild(errorElement);
+            }
+
             form.appendChild(block);
         }
     });
