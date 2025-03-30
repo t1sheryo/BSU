@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page</title>
+    <style>
+        .error-message {
+            color: red;
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <a href="MAKET_TABLE.html">Вернуться на главную</a>
+
+    <div id="formContainer"></div>
+
+    <!-- Подключаем сначала основной скрипт с формой -->
+    <script type="module" src="componentsArray.js"></script>
+    
+    <!-- Затем подключаем скрипт валидации (не как модуль) -->
+    <script src="validation.js"></script>
+</body>
+</html>
