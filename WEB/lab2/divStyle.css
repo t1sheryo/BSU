@@ -25,7 +25,7 @@ header, footer {
 }
 
 .sidebar {
-  width: 40%;
+  width: 350px;
   background: #fff9f0;
   padding: 15px;
   border-right: 1px solid #ddd;

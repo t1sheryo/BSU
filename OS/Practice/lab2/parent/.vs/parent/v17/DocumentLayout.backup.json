@@ -54,6 +54,7 @@
               "RelativeToolTip": "parent\\parent.cpp",
               "ViewState": "AgIAABgAAAAAAAAAAAAAABQAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+<<<<<<< HEAD
               "WhenOpened": "2025-02-25T19:30:07.353Z",
               "EditorCaption": ""
             },
@@ -69,6 +70,9 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-02-25T21:10:40.628Z",
               "EditorCaption": ""
+=======
+              "WhenOpened": "2025-02-25T19:30:07.353Z"
+>>>>>>> 2d839dd80a7c5bfb2fca32db7e384b6d98aa851e
             }
           ]
         }

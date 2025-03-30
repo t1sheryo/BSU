@@ -29,7 +29,6 @@ th {
 
 td:first-child {
   background-color: #fff9f0;
-  width: 40%;
 }
 
 a {
@@ -60,4 +59,8 @@ tr:last-child td {
 
 .text{
   font-size: 45px;
+}
+
+.linksColumn{
+  width: 350px;
 }
