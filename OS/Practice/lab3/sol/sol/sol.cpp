@@ -1,0 +1,148 @@
+﻿#include <windows.h>
+#include <iostream>
+#include <vector>
+#include <clocale>
+#include <ctime>
+#include <chrono>
+#include <thread>
+#include <cmath>
+
+using namespace std;
+
+struct WorkData {
+    vector<float>* arr;
+    HANDLE hMutex;
+    HANDLE hWorkDone;
+};
+
+struct CountData {
+    const vector<float>* arr;
+    CRITICAL_SECTION* cs;
+    HANDLE hEvent;
+    HANDLE hWorkDone;
+    int* positiveCount;
+};
+
+DWORD WINAPI WorkThread(LPVOID lpParam) {
+    WorkData* data = (WorkData*)lpParam;
+
+    WaitForSingleObject(data->hMutex, INFINITE);
+
+    int sleepTime = 0;
+    cout << "Enter rest time interval (ms): ";
+    cin >> sleepTime;
+
+    vector<float> tempArr;
+    for (float num : *(data->arr)) {
+        if (num > 0) {
+            tempArr.push_back(floor(num));
+        }
+        this_thread::sleep_for(chrono::milliseconds(sleepTime));
+    }
+
+    for (float num : *(data->arr)) {
+        tempArr.push_back(num);
+        this_thread::sleep_for(chrono::milliseconds(sleepTime));
+    }
+
+    *(data->arr) = tempArr;
+
+    SetEvent(data->hWorkDone);
+    ReleaseMutex(data->hMutex);
+
+    return 0;
+}
+
+DWORD WINAPI CountThread(LPVOID lpParam) {
+    CountData* data = (CountData*)lpParam;
+
+    WaitForSingleObject(data->hWorkDone, INFINITE);
+
+    EnterCriticalSection(data->cs);
+    cout << "Count thread started processing." << endl;
+    LeaveCriticalSection(data->cs);
+
+    *(data->positiveCount) = 0;
+    for (float num : *(data->arr)) {
+        if (num > 0) {
+            (*data->positiveCount)++;
+        }
+    }
+
+    SetEvent(data->hEvent);
+    return 0;
+}
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+    HANDLE hMutex = CreateMutex(NULL, FALSE, NULL);
+    HANDLE hEvent = CreateEvent(NULL, FALSE, FALSE, NULL);
+    HANDLE hWorkDone = CreateEvent(NULL, FALSE, FALSE, NULL);
+    CRITICAL_SECTION cs;
+    InitializeCriticalSection(&cs);
+
+    vector<float> arr;
+    int positiveCount = 0;
+
+    int size;
+    cout << "Enter array size: ";
+    cin >> size;
+
+    arr.resize(size);
+    cout << "Enter array elements (1 - manually, 2 - randomly): ";
+    int choice;
+    cin >> choice;
+
+    if (choice == 1) {
+        for (int i = 0; i < size; i++) {
+            cout << "arr[" << i << "] = ";
+            cin >> arr[i];
+        }
+    }
+    else {
+        srand(time(NULL));
+        for (int i = 0; i < size; i++) {
+            arr[i] = (rand() % 200 - 100) / 10.0f;
+        }
+    }
+
+    cout << "Initial array (" << size << " elements): ";
+    for (float num : arr) {
+        cout << num << " ";
+    }
+    cout << endl;
+
+    WorkData workData = { &arr, hMutex, hWorkDone };
+    HANDLE hWork = CreateThread(NULL, 0, WorkThread, &workData, 0, NULL);
+
+    CountData countData = { &arr, &cs, hEvent, hWorkDone, &positiveCount };
+    HANDLE hCount = CreateThread(NULL, 0, CountThread, &countData, 0, NULL);
+
+    WaitForSingleObject(hWork, INFINITE);
+    WaitForSingleObject(hMutex, INFINITE);
+    cout << "Final array (" << arr.size() << " elements): ";
+    for (float num : arr) {
+        cout << num << " ";
+    }
+    cout << endl;
+    ReleaseMutex(hMutex);
+
+    EnterCriticalSection(&cs);
+    cout << "Main thread signaled Count to start." << endl;
+    LeaveCriticalSection(&cs);
+
+    WaitForSingleObject(hEvent, INFINITE);
+    cout << "Number of positive elements: " << positiveCount / 2 << endl;
+
+    CloseHandle(hWork);
+    CloseHandle(hCount);
+    CloseHandle(hMutex);
+    CloseHandle(hEvent);
+    CloseHandle(hWorkDone);
+    DeleteCriticalSection(&cs);
+
+    return 0;
+}

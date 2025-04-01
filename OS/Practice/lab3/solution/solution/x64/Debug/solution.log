@@ -1,0 +1,3 @@
+﻿  solution.cpp
+C:\proga\BSU\OS\Practice\lab3\solution\solution\solution.cpp(95,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+LINK : fatal error LNK1168: cannot open C:\proga\BSU\OS\Practice\lab3\solution\x64\Debug\solution.exe for writing

@@ -1,0 +1,61 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\proga\\BSU\\OS\\Practice\\lab3\\solution\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8D599242-E0C5-45F6-8746-DE084A2DDAFE}|solution\\solution.vcxproj|C:\\proga\\BSU\\OS\\Practice\\lab3\\solution\\solution\\solution.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{8D599242-E0C5-45F6-8746-DE084A2DDAFE}|solution\\solution.vcxproj|solutionrelative:solution\\solution.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "solution.cpp",
+              "DocumentMoniker": "C:\\proga\\BSU\\OS\\Practice\\lab3\\solution\\solution\\solution.cpp",
+              "RelativeDocumentMoniker": "solution\\solution.cpp",
+              "ToolTip": "C:\\proga\\BSU\\OS\\Practice\\lab3\\solution\\solution\\solution.cpp",
+              "RelativeToolTip": "solution\\solution.cpp",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACMAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-30T18:22:34.378Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
