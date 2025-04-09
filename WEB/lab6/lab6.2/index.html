@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Хранилище кафе (LocalStorage)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+    }
+    input[type="button"] {
+      padding: 8px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type="button"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Управление кафе в LocalStorage</h1>
+  <div>
+    <p>Доступные функции:</p>
+    <ul>
+      <li><input onclick="Reset();" value="Очистить хранилище" type="button"></li>
+      <li><input onclick="Add();" value="Добавить кафе" type="button"></li>
+      <li><input onclick="Delete();" value="Удалить кафе" type="button"></li>
+      <li><input onclick="GetValue();" value="Получить информацию о кафе" type="button"></li>
+      <li><input onclick="GetKeys();" value="Показать все кафе" type="button"></li>
+    </ul>
+  </div>
+
+  <script src="TLocalStorage.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
