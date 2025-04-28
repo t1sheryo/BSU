@@ -1,0 +1,12 @@
+{
+    "name": "cafe-spa",
+    "version": "1.0.0",
+    "description": "SPA приложение для кафе",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.18.2"
+    }
+  }
