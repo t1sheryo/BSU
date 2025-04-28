@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
+<<<<<<< HEAD
     function loadJsonData() {
         fetch('/data.json')
             .then(response => response.json())
@@ -51,4 +52,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 jsonDataDiv.innerHTML = '<p>Ошибка загрузки данных</p>';
             });
     }
+=======
+    // function loadJsonData() {
+    //     fetch('/data.json')
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             let table = '<table border="1"><tr><th>Название</th><th>Описание</th><th>Цена</th></tr>';
+    //             for (const [name, details] of Object.entries(data)) {
+    //                 table += `<tr><td>${name}</td><td>${details.description}</td><td>${details.price} ₽</td></tr>`;
+    //             }
+    //             table += '</table>';
+    //             jsonDataDiv.innerHTML = table;
+    //         })
+    //         .catch(error => {
+    //             console.error('Error loading JSON data:', error);
+    //             jsonDataDiv.innerHTML = '<p>Ошибка загрузки данных</p>';
+    //         });
+    // }
+
+    function loadJsonData() {
+        fetch('/data.json')
+            .then(response => response.blob()) 
+            .then(blob => {
+                const url = URL.createObjectURL(blob); 
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'data.json'; 
+                link.click(); 
+                URL.revokeObjectURL(url); 
+            })
+            .catch(error => {
+                console.error('Ошибка загрузки:', error);
+                alert('Не удалось скачать файл!');
+            });
+        }   
+>>>>>>> 297429ed2abbca66ebd83300ce5b5a0089309e7f
 });

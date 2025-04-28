@@ -12,22 +12,24 @@ using namespace std;
 struct WorkData {
     vector<float>* arr;
     HANDLE hMutex;
-    HANDLE hWorkDone;
+    //HANDLE hWorkDone;
 };
 
 struct CountData {
     const vector<float>* arr;
     CRITICAL_SECTION* cs;
     HANDLE hEvent;
-    HANDLE hWorkDone;
+    //HANDLE hWorkDone;
     int* positiveCount;
 };
 
 DWORD WINAPI WorkThread(LPVOID lpParam) {
     WorkData* data = (WorkData*)lpParam;
 
+    
     WaitForSingleObject(data->hMutex, INFINITE);
 
+    std::cout << "mutex";
     int sleepTime = 0;
     cout << "Enter rest time interval (ms): ";
     cin >> sleepTime;
@@ -47,7 +49,7 @@ DWORD WINAPI WorkThread(LPVOID lpParam) {
 
     *(data->arr) = tempArr;
 
-    SetEvent(data->hWorkDone);
+    //SetEvent(data->hWorkDone);
     ReleaseMutex(data->hMutex);
 
     return 0;
@@ -56,11 +58,11 @@ DWORD WINAPI WorkThread(LPVOID lpParam) {
 DWORD WINAPI CountThread(LPVOID lpParam) {
     CountData* data = (CountData*)lpParam;
 
-    WaitForSingleObject(data->hWorkDone, INFINITE);
+    //WaitForSingleObject(data->hWorkDone, INFINITE);
 
     EnterCriticalSection(data->cs);
     cout << "Count thread started processing." << endl;
-    LeaveCriticalSection(data->cs);
+ 
 
     *(data->positiveCount) = 0;
     for (float num : *(data->arr)) {
@@ -68,7 +70,7 @@ DWORD WINAPI CountThread(LPVOID lpParam) {
             (*data->positiveCount)++;
         }
     }
-
+    LeaveCriticalSection(data->cs);
     SetEvent(data->hEvent);
     return 0;
 }
@@ -80,7 +82,7 @@ int main() {
 
     HANDLE hMutex = CreateMutex(NULL, FALSE, NULL);
     HANDLE hEvent = CreateEvent(NULL, FALSE, FALSE, NULL);
-    HANDLE hWorkDone = CreateEvent(NULL, FALSE, FALSE, NULL);
+    //HANDLE hWorkDone = CreateEvent(NULL, FALSE, FALSE, NULL);
     CRITICAL_SECTION cs;
     InitializeCriticalSection(&cs);
 
@@ -115,14 +117,16 @@ int main() {
     }
     cout << endl;
 
-    WorkData workData = { &arr, hMutex, hWorkDone };
+    WorkData workData = { &arr, hMutex };
     HANDLE hWork = CreateThread(NULL, 0, WorkThread, &workData, 0, NULL);
-
-    CountData countData = { &arr, &cs, hEvent, hWorkDone, &positiveCount };
+    EnterCriticalSection(&cs);
+    CountData countData = { &arr, &cs, hEvent, &positiveCount };
     HANDLE hCount = CreateThread(NULL, 0, CountThread, &countData, 0, NULL);
-
-    WaitForSingleObject(hWork, INFINITE);
+    Sleep(1);
+    
     WaitForSingleObject(hMutex, INFINITE);
+    std::cout << "mutex m";
+
     cout << "Final array (" << arr.size() << " elements): ";
     for (float num : arr) {
         cout << num << " ";
@@ -130,18 +134,19 @@ int main() {
     cout << endl;
     ReleaseMutex(hMutex);
 
-    EnterCriticalSection(&cs);
+    
     cout << "Main thread signaled Count to start." << endl;
     LeaveCriticalSection(&cs);
 
     WaitForSingleObject(hEvent, INFINITE);
     cout << "Number of positive elements: " << positiveCount / 2 << endl;
-
-    CloseHandle(hWork);
+    //WaitForSingleObject(hWork, INFINITE);
+    WaitForSingleObject(hCount, INFINITE);
+    //CloseHandle(hWork);
     CloseHandle(hCount);
     CloseHandle(hMutex);
     CloseHandle(hEvent);
-    CloseHandle(hWorkDone);
+    //CloseHandle(hWorkDone);
     DeleteCriticalSection(&cs);
 
     return 0;
