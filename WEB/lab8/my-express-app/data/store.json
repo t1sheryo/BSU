@@ -16,5 +16,29 @@
     "description": "sfuhsuf",
     "price": 335,
     "category": "Напитки"
+  },
+  {
+    "name": "155",
+    "description": "15",
+    "price": 3,
+    "category": "Салаты"
+  },
+  {
+    "name": "1515",
+    "description": "35",
+    "price": 636,
+    "category": "Салаты"
+  },
+  {
+    "name": "35636",
+    "description": "36",
+    "price": 36,
+    "category": "Салаты"
+  },
+  {
+    "name": "356",
+    "description": "6",
+    "price": 6,
+    "category": "Салаты"
   }
 ]

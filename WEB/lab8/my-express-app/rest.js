@@ -3,12 +3,10 @@ const store = require('./store');
 module.exports = function(app) {
     app.set('view engine', 'ejs');
 
-    // Create
     app.post('/api/menu', (req, res) => {
         try {
             const data = store.readData();
 
-            // Проверяем, есть ли уже блюдо с таким именем
             if (data.find(item => item.name === req.body.name)) {
                 return res.status(400).json({ error: 'Блюдо с таким названием уже существует' });
             }
@@ -33,7 +31,6 @@ module.exports = function(app) {
         }
     });
 
-    // Read All with pagination, sorting and search
     app.get('/api/menu', (req, res) => {
         try {
             const data = store.readData();
@@ -43,7 +40,6 @@ module.exports = function(app) {
             const sort = req.query.sort || 'name';
             const order = req.query.order || 'asc';
 
-            // Поиск
             let filteredData = data;
             if (search) {
                 filteredData = data.filter(item => 
@@ -51,7 +47,6 @@ module.exports = function(app) {
                 );
             }
 
-            // Сортировка
             filteredData.sort((a, b) => {
                 if (order === 'asc') {
                     return a[sort] > b[sort] ? 1 : -1;
@@ -60,7 +55,6 @@ module.exports = function(app) {
                 }
             });
 
-            // Пагинация
             const startIndex = (page - 1) * limit;
             const endIndex = page * limit;
             const paginatedData = filteredData.slice(startIndex, endIndex);
@@ -76,7 +70,6 @@ module.exports = function(app) {
         }
     });
 
-    // Read One by name
     app.get('/api/menu/:name', (req, res) => {
         try {
             const data = store.readData();
@@ -91,7 +84,6 @@ module.exports = function(app) {
         }
     });
 
-    // Update by name
     app.put('/api/menu/:name', (req, res) => {
         try {
             let data = store.readData();
@@ -113,7 +105,6 @@ module.exports = function(app) {
                 return res.status(400).json({ error: 'Название и корректная цена обязательны' });
             }
 
-            // Проверка на изменение имени и конфликт с другим блюдом
             if (updatedItem.name !== req.params.name && data.find(item => item.name === updatedItem.name)) {
                 return res.status(400).json({ error: 'Блюдо с таким названием уже существует' });
             }
@@ -127,7 +118,6 @@ module.exports = function(app) {
         }
     });
 
-    // Delete by name
     app.delete('/api/menu/:name', (req, res) => {
         try {
             let data = store.readData();
@@ -145,7 +135,6 @@ module.exports = function(app) {
         }
     });
 
-    // Главная страница
     app.get('/', (req, res) => {
         try {
             const data = store.readData();
