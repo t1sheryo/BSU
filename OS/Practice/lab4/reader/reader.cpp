@@ -61,11 +61,11 @@ int main(int argc, char* argv[]) {
     while (true) {
         DWORD waitResult = WaitForMultipleObjects(2, waitHandles, FALSE, INFINITE);
 
-        if (waitResult == WAIT_OBJECT_0 + 1) { // Exit event
+        if (waitResult == WAIT_OBJECT_0 + 1) { 
             cout << "Reader " << GetCurrentProcessId() << ": Received exit signal. Total read: " << totalRead << endl;
             break;
         }
-        else if (waitResult == WAIT_OBJECT_0) { // Write event
+        else if (waitResult == WAIT_OBJECT_0) {
             waitResult = WaitForSingleObject(hSemaphore, 0);
             if (waitResult == WAIT_OBJECT_0) {
                 cout << "Reader " << GetCurrentProcessId() << ": Activ (semaphore captured)" << endl;
@@ -116,6 +116,7 @@ int main(int argc, char* argv[]) {
     CloseHandle(hWriteEvent);
     CloseHandle(hExitEvent);
     CloseHandle(hAdminReadyEvent);
-
+    int a;
+    std::cin >> a;
     return 0;
 }
