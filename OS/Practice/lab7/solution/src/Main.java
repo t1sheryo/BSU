@@ -131,8 +131,8 @@ public class Main {
         Semaphore semaphore;
         public CountThread(ReentrantLock lock, Semaphore semaphore) {
             super("CountThread");
-            this.lock = lock;
-            this.semaphore = semaphore;
+            //this.lock = lock;
+            //this.semaphore = semaphore;
         }
 
         public void run() {

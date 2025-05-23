@@ -2,121 +2,86 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <thread>
 #include <vector>
-#include <tchar.h>
+#include <random>
 
 using namespace std;
 
-const wstring SEMAPHORE_NAME = L"ReaderSemaphore";
-const wstring MUTEX_NAME = L"FileMutex";
-const wstring WRITE_EVENT_NAME = L"WriteEvent";
-const wstring EXIT_EVENT_NAME = L"ExitEvent";
-const wstring ADMIN_READY_EVENT_NAME = L"AdminReadyEvent";
+void sleepShortRandom() {
+    Sleep(1 + rand() % 3);
+}
 
-int main(int argc, char* argv[]) {
+int wmain(int argc, wchar_t* argv[]) {
     if (argc != 3) {
-        cerr << "Usage: Reader.exe <P> <filename>" << endl;
+        wcerr << L"Usage: Reader.exe <P> <filename>" << endl;
         return 1;
     }
 
-    int P = stoi(argv[1]);
-    wstring filename(argv[2], argv[2] + strlen(argv[2]));
+    int P = _wtoi(argv[1]);
+    wstring wfilename = argv[2];
 
-    HANDLE hSemaphore = OpenSemaphore(SYNCHRONIZE | SEMAPHORE_MODIFY_STATE, FALSE, SEMAPHORE_NAME.c_str());
-    if (hSemaphore == NULL) {
-        cerr << "OpenSemaphore error: " << GetLastError() << endl;
+    HANDLE hLimit = OpenSemaphoreW(SYNCHRONIZE | SEMAPHORE_MODIFY_STATE, FALSE, L"Global\\ReaderLimitSemaphore");
+    HANDLE hFileMutex = OpenMutexW(SYNCHRONIZE | MUTEX_MODIFY_STATE, FALSE, L"Global\\FileAccessMutex");
+    HANDLE hPrintMutex = OpenMutexW(SYNCHRONIZE | MUTEX_MODIFY_STATE, FALSE, L"Global\\PrintMutex");
+    HANDLE hEndEvent = OpenEventW(SYNCHRONIZE, FALSE, L"Global\\EndSessionEvent");
+
+    if (!hLimit || !hFileMutex || !hPrintMutex || !hEndEvent) {
+        wcerr << L"Failed to open sync objects: " << GetLastError() << endl;
         return 1;
     }
 
-    HANDLE hMutex = OpenMutex(SYNCHRONIZE | MUTEX_MODIFY_STATE, FALSE, MUTEX_NAME.c_str());
-    if (hMutex == NULL) {
-        cerr << "OpenMutex error: " << GetLastError() << endl;
-        return 1;
-    }
+    WaitForSingleObject(hLimit, INFINITE);
 
-    HANDLE hWriteEvent = OpenEvent(SYNCHRONIZE, FALSE, WRITE_EVENT_NAME.c_str());
-    if (hWriteEvent == NULL) {
-        cerr << "OpenEvent (Write) error: " << GetLastError() << endl;
-        return 1;
-    }
+    int readCount = 0;
+    vector<wstring> readLines;
 
-    HANDLE hExitEvent = OpenEvent(SYNCHRONIZE, FALSE, EXIT_EVENT_NAME.c_str());
-    if (hExitEvent == NULL) {
-        cerr << "OpenEvent (Exit) error: " << GetLastError() << endl;
-        return 1;
-    }
+    mt19937_64 rng(random_device{}());
 
-    HANDLE hAdminReadyEvent = OpenEvent(SYNCHRONIZE, FALSE, ADMIN_READY_EVENT_NAME.c_str());
-    if (hAdminReadyEvent == NULL) {
-        cerr << "OpenEvent (AdminReady) error: " << GetLastError() << endl;
-        return 1;
-    }
-
-    WaitForSingleObject(hAdminReadyEvent, INFINITE);
-
-    HANDLE waitHandles[] = { hWriteEvent, hExitEvent };
-    int totalRead = 0;
-    vector<string> readData;
-
-    while (true) {
-        DWORD waitResult = WaitForMultipleObjects(2, waitHandles, FALSE, INFINITE);
-
-        if (waitResult == WAIT_OBJECT_0 + 1) { 
-            cout << "Reader " << GetCurrentProcessId() << ": Received exit signal. Total read: " << totalRead << endl;
+    while (readCount < P) {
+        if (WaitForSingleObject(hEndEvent, 0) == WAIT_OBJECT_0)
             break;
-        }
-        else if (waitResult == WAIT_OBJECT_0) {
-            waitResult = WaitForSingleObject(hSemaphore, 0);
-            if (waitResult == WAIT_OBJECT_0) {
-                cout << "Reader " << GetCurrentProcessId() << ": Activ (semaphore captured)" << endl;
 
-                waitResult = WaitForSingleObject(hMutex, 0);
-                if (waitResult == WAIT_OBJECT_0) {
-                    cout << "Reader " << GetCurrentProcessId() << ": Activ (mutex captured)" << endl;
+        sleepShortRandom();
 
-                    ifstream file(filename);
-                    if (file.is_open()) {
-                        string line;
-                        int count = 0;
-
-                        while (count < P && getline(file, line)) {
-                            readData.push_back(line);
-                            count++;
-                            totalRead++;
-                        }
-
-                        file.close();
-
-                        cout << "Reader " << GetCurrentProcessId() << " read: ";
-                        for (const auto& item : readData) {
-                            cout << item << " ";
-                        }
-                        cout << endl;
-                        readData.clear();
-                    }
-
-                    if (!ReleaseMutex(hMutex)) {
-                        cerr << "ReleaseMutex error: " << GetLastError() << endl;
-                    }
-                    cout << "Reader " << GetCurrentProcessId() << ": Inactiv (mutex released)" << endl;
-                }
-
-                if (!ReleaseSemaphore(hSemaphore, 1, NULL)) {
-                    cerr << "ReleaseSemaphore error: " << GetLastError() << endl;
-                }
-                cout << "Reader " << GetCurrentProcessId() << ": Inactiv (semaphore released)" << endl;
+        // Читаем все строки из файла
+        vector<wstring> lines;
+        WaitForSingleObject(hFileMutex, INFINITE);
+        wifstream file(wfilename);
+        if (file.is_open()) {
+            wstring line;
+            while (getline(file, line)) {
+                if (!line.empty())
+                    lines.push_back(line);
             }
+            file.close();
+        }
+        ReleaseMutex(hFileMutex);
 
-            Sleep(1 + rand() % 3); 
+        // Если есть строки, выбираем случайную
+        if (!lines.empty()) {
+            uniform_int_distribution<size_t> dist(0, lines.size() - 1);
+            wstring selectedLine = lines[dist(rng)];
+            readLines.push_back(selectedLine);
+            readCount++;
+
+            WaitForSingleObject(hPrintMutex, INFINITE);
+            wcout << L"Reader " << GetCurrentProcessId() << L" read: " << selectedLine << endl;
+            ReleaseMutex(hPrintMutex);
         }
     }
 
-    CloseHandle(hSemaphore);
-    CloseHandle(hMutex);
-    CloseHandle(hWriteEvent);
-    CloseHandle(hExitEvent);
-    CloseHandle(hAdminReadyEvent);
-    int a;
-    std::cin >> a;
+    WaitForSingleObject(hPrintMutex, INFINITE);
+    wcout << L"Reader " << GetCurrentProcessId() << L": session ended, total read = " << readCount << endl;
+    ReleaseMutex(hPrintMutex);
+
+    ReleaseSemaphore(hLimit, 1, NULL);
+
+    CloseHandle(hLimit);
+    CloseHandle(hFileMutex);
+    CloseHandle(hPrintMutex);
+    CloseHandle(hEndEvent);
+    int i = 0;
+    std::cin >> i;
     return 0;
 }

@@ -1,2 +1,51 @@
-﻿  solution.cpp
-  solution.vcxproj -> C:\proga\BSU\OS\Practice\lab5\solution\x64\Debug\solution.exe
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(524,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  solution.cpp
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(89,9): error C2059: syntax error: 'if'
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(94,15): error C2143: syntax error: missing ';' before '<<'
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(94,10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(94,10): error C2371: 'std::cout': redefinition; different basic types
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\iostream(40,75):
+      see declaration of 'std::cout'
+  
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(94,15): error C2059: syntax error: '<<'
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(95,23): error C2065: 'result': undeclared identifier
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(95,5): error C2059: syntax error: 'for'
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(95,29): error C2059: syntax error: ')'
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(95,23): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(96,22): error C2065: 'num': undeclared identifier
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(96,32): error C2059: syntax error: ';'
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(97,5): error C2059: syntax error: '}'
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(97,5): error C2143: syntax error: missing ';' before '}'
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(101,5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(101,5): error C2365: 'CloseHandle': redefinition; previous definition was 'function'
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\handleapi.h(38,1):
+      see declaration of 'CloseHandle'
+  
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(101,17): error C2065: 'hWritePipe1': undeclared identifier
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(102,5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(102,5): error C2365: 'CloseHandle': redefinition; previous definition was 'function'
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\handleapi.h(38,1):
+      see declaration of 'CloseHandle'
+  
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(102,17): error C2065: 'hReadPipe2': undeclared identifier
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(105,5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(105,5): error C2365: 'WaitForSingleObject': redefinition; previous definition was 'function'
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\synchapi.h(352,1):
+      see declaration of 'WaitForSingleObject'
+  
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(105,25): error C2065: 'pi': undeclared identifier
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(106,5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(106,5): error C2365: 'CloseHandle': redefinition; previous definition was 'function'
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\handleapi.h(38,1):
+      see declaration of 'CloseHandle'
+  
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(106,17): error C2065: 'pi': undeclared identifier
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(107,5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(107,5): error C2365: 'CloseHandle': redefinition; previous definition was 'function'
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.26100.0\um\handleapi.h(38,1):
+      see declaration of 'CloseHandle'
+  
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(107,17): error C2065: 'pi': undeclared identifier
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(109,5): error C2059: syntax error: 'return'
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(110,1): error C2059: syntax error: '}'
+C:\proga\BSU\OS\Practice\lab5\solution\solution\solution.cpp(110,1): error C2143: syntax error: missing ';' before '}'

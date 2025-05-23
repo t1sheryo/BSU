@@ -1,0 +1,426 @@
+[33mcommit a7297b3df302375178423dfece2c425747867c16[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: timofey <timofey13052005@gmail.com>
+Date:   Fri May 23 19:45:25 2025 +0300
+
+    добавил лабы по вебу и ос
+
+[33mcommit 587ae33acad870f3bd62d010e8a78709c7694e0c[m
+Author: timofey <timofey13052005@gmail.com>
+Date:   Mon May 19 01:18:26 2025 +0300
+
+    Track .ipch files with LFS
+
+[33mcommit cf5b815805e61ef46a41c5fdf3180998199e168a[m
+Author: timofey <timofey13052005@gmail.com>
+Date:   Mon May 19 01:16:44 2025 +0300
+
+    deleted large file
+
+[33mcommit b5dabe11f013fa1c63b36bb5b561d703beca54ff[m
+Author: timofey <timofey13052005@gmail.com>
+Date:   Mon May 19 01:11:24 2025 +0300
+
+    labs oS
+
+[33mcommit 37706ae0a4ed27dde0026c253df4b9412f2a20a4[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Sun May 18 22:49:54 2025 +0300
+
+    lab7 OS
+
+[33mcommit e167034c231af2c5d4411bd7944ca011cc82c448[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Wed May 7 12:07:28 2025 +0300
+
+    fixes
+
+[33mcommit 150845662272db6112d337d1383429ff8048dd5e[m
+Merge: b0d6e76 d2a2176
+Author: timofey <timofey13052005@gmail.com>
+Date:   Wed May 7 11:36:48 2025 +0300
+
+    Merge branch 'main' of https://github.com/t1sheryo/BSU
+
+[33mcommit b0d6e7613110cfc2846543a1cfdd009c5483e4d4[m
+Author: timofey <timofey13052005@gmail.com>
+Date:   Wed May 7 11:36:23 2025 +0300
+
+    lab8.3
+
+[33mcommit d2a217665f6958ed31930555c7efe023404e7c14[m
+Merge: 8220837 297429e
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Tue Apr 29 00:18:04 2025 +0300
+
+    one more commit
+
+[33mcommit 8220837b73ab1026ff4d71395624a2e99d05a572[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Tue Apr 29 00:15:24 2025 +0300
+
+    lab7.1 WEB
+
+[33mcommit 297429ed2abbca66ebd83300ce5b5a0089309e7f[m
+Author: timofey <timofey13052005@gmail.com>
+Date:   Mon Apr 28 23:55:40 2025 +0300
+
+    lab7,8 WEB. lab 4 OS
+
+[33mcommit 3f16e21f25fdc62b03a11fe311fc604960c3a80f[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Wed Apr 9 16:57:21 2025 +0300
+
+    lab6, lab7.1
+
+[33mcommit a0943e5d65ec0bb6b003828bee5d038d2c55ad53[m
+Author: timofey <timofey13052005@gmail.com>
+Date:   Tue Apr 1 08:32:47 2025 +0300
+
+    lab3 OS
+
+[33mcommit 52f147a5060d1bbd745b3b8073c6444d655e00fa[m
+Merge: d47a6e1 39b5c32
+Author: timofey <timofey13052005@gmail.com>
+Date:   Sun Mar 30 21:18:25 2025 +0300
+
+    merging os labs
+
+[33mcommit d47a6e12666d47cb27f4f286639cf88fe9c2c5c2[m
+Merge: 212d974 2d839dd
+Author: timofey <timofey13052005@gmail.com>
+Date:   Sun Mar 30 21:18:11 2025 +0300
+
+    lab2 os
+
+[33mcommit 39b5c322593af503fa69c2e0b3754c5b2a3651f0[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Wed Mar 26 12:16:17 2025 +0300
+
+    little corrections
+
+[33mcommit c0936283da46897e570b16b586d1b71d275a7590[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Wed Mar 26 10:46:05 2025 +0300
+
+    lab5 is done
+
+[33mcommit 4167e7b77d6eb98b58fa321269402fef48609469[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Sat Mar 22 20:38:27 2025 +0300
+
+    first part of task is done, must also do validation
+
+[33mcommit 54f046d0e796a0ab73121cd0a71291b06749dfef[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Tue Mar 11 21:25:42 2025 +0300
+
+    added lab4 WEB
+
+[33mcommit 2d839dd80a7c5bfb2fca32db7e384b6d98aa851e[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Wed Mar 5 08:47:10 2025 +0300
+
+    os lab
+
+[33mcommit 212d974417ec07f9390be29ac34495ea673a66bf[m
+Author: timofey <timofey13052005@gmail.com>
+Date:   Wed Mar 5 08:04:15 2025 +0300
+
+    fixed lab2 os a bit
+
+[33mcommit cf7af5963d52f9332403c616c14ccd6fdc16e22b[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Sun Mar 2 14:37:42 2025 +0300
+
+    added .gitignore
+
+[33mcommit 136d949d6951d16d9439d16bc27e3c6735edc4dc[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Sun Mar 2 14:28:03 2025 +0300
+
+    lab3 web
+
+[33mcommit ddbf388f42377d695547328ecb4145885681af8f[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Wed Feb 26 00:12:41 2025 +0300
+
+    lab2 os
+
+[33mcommit d187794eddf44d90c08968857f072ea0e93f5edd[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Mon Feb 24 23:26:26 2025 +0300
+
+    lab2 web
+
+[33mcommit 79129843cd3721912450bace535128b7e8a4163c[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Mon Feb 24 19:47:36 2025 +0300
+
+    lab1 web
+
+[33mcommit 480ca052481625acaea159c8a92ff222e6e7ae86[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Tue Feb 18 20:55:47 2025 +0300
+
+    done web lab 1
+
+[33mcommit 36c38cdfab58aac4eb177209bcb56c4aa51e5a40[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Tue Feb 18 19:14:34 2025 +0300
+
+    init 2nd sem commit
+
+[33mcommit 814fa451a3f63f0ec1e59248ed347107c8af0134[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Sat Feb 15 14:08:46 2025 +0300
+
+    made with CMake
+
+[33mcommit e7c71ef6b37369e76155ceda99ff2bf9af747bd3[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Mon Feb 10 11:28:36 2025 +0300
+
+    .
+
+[33mcommit b9eff708ff852b0fee11696cd53ea2d73a85c8a3[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Mon Dec 23 09:59:55 2024 +0300
+
+    lab10
+
+[33mcommit 6c6faf9d429c1d3f84478d486905e2843a433763[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Fri Dec 13 10:43:34 2024 +0300
+
+    solved lab5
+
+[33mcommit 915df62f98a220d4364ff8e646cfc02289cb55d9[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Fri Dec 13 10:18:10 2024 +0300
+
+    lab5
+
+[33mcommit 266ba1d78d6cbc5fab4832cf12f06ed66aea746e[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Tue Dec 3 21:37:08 2024 +0300
+
+    cor
+
+[33mcommit 68eea2820efcbd2438fc2f636ac0c33ca81821bd[m
+Merge: d3dfa19 01e3aa4
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Tue Dec 3 00:51:19 2024 +0300
+
+    Merge branch 'main' of https://github.com/t1sheryo/BSU
+    Merge with main branch
+
+[33mcommit d3dfa194b1e3299c31557f6a34c3f1f8b5871639[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Tue Dec 3 00:51:05 2024 +0300
+
+    lab 5, 6
+
+[33mcommit 01e3aa41c664d5f6ece7cc926e5281fd9225b1c2[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Mon Dec 2 23:35:59 2024 +0300
+
+    m
+
+[33mcommit 4b50382f72487f898807f8f83ec775e1e9515828[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Mon Dec 2 20:42:38 2024 +0300
+
+    addead exe and documentation
+
+[33mcommit 0f10bfaf06542caa4ec9cc9454f585d86ab63a07[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Mon Dec 2 20:18:35 2024 +0300
+
+    lab 3,4 prg
+
+[33mcommit 0837d95341f181b96c8fca77d70b88d28b30c723[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Sun Nov 24 19:03:08 2024 +0300
+
+    lab9
+
+[33mcommit 1c2734b057a8a0da47bcdae14beb7f34ebe5842e[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Tue Nov 12 11:00:35 2024 +0300
+
+    lab3
+
+[33mcommit 5b9d2bf368ab842e1bf60d02945d50dd4560fea9[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Sat Nov 9 13:48:44 2024 +0300
+
+    L
+
+[33mcommit 2fa44c26d13f894709eb00fddfbd0ce52323de91[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Fri Nov 8 19:52:11 2024 +0300
+
+    lab8 multithread
+
+[33mcommit 668103f6769fcb2741aa17768d03508b1cb5cdd6[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Sun Nov 3 12:35:24 2024 +0300
+
+    lab3
+
+[33mcommit 93625d19efa399505eaa68984009a68bfc2cc6a6[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Sat Nov 2 11:08:48 2024 +0300
+
+    lab2
+
+[33mcommit 2febb47810b4443742e72d9f7a7599e04ee34f24[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Sat Oct 26 21:49:15 2024 +0300
+
+    ?
+
+[33mcommit 10dd20b0dd78bb89995a50c06c8979f8d8d4d9a1[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Sat Oct 26 21:14:11 2024 +0300
+
+    documentation addead
+
+[33mcommit a8f77121bf731172f31b270ef5741328097d74b1[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Sat Oct 26 21:11:37 2024 +0300
+
+    python lab2
+
+[33mcommit 4a16b3d72c82a61d6d91f686b81aa86aa630824e[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Sat Oct 26 21:01:54 2024 +0300
+
+    lab7
+
+[33mcommit 5f5769a7f0206cb2fb8a29437af6f65d54d4f67c[m
+Merge: e01c07b 8e12ee0
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Thu Oct 24 20:37:03 2024 +0300
+
+    Merge branch 'main' of github.com:t1sheryo/BSU
+
+[33mcommit e01c07b6aefc617b000d2a57768ac2bd6666a1b6[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Thu Oct 24 20:36:49 2024 +0300
+
+    python added
+
+[33mcommit 8e12ee096623650e28d029dc333388d906a74cfa[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Mon Oct 21 20:44:38 2024 +0300
+
+    added documentation
+
+[33mcommit d3a6c9dd46b5e5b86c9e34dba511a253cd2e8434[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Mon Oct 21 18:14:11 2024 +0300
+
+    pkg lab
+
+[33mcommit c23b01cd386c26395f43087ddc84e2f1f78a6a80[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Mon Oct 21 15:12:42 2024 +0300
+
+    java lab
+
+[33mcommit f54bfa46990dfaa1a4493547cccf8338d7846199[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Thu Oct 17 23:39:47 2024 +0300
+
+    laba
+
+[33mcommit a29a54ced270b1b100d20eca404c34f14849c908[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Wed Oct 16 22:58:58 2024 +0300
+
+    MV lab1
+
+[33mcommit 3735a13a6ef1c7b49def9a2d75dd38da303a034d[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Sun Oct 13 21:27:11 2024 +0300
+
+    deleted
+
+[33mcommit a2e0a1227bec53b7ddc6553adae7e979fb4d0d6c[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Sun Oct 13 21:25:55 2024 +0300
+
+    lab2 cgp
+
+[33mcommit 3033abd94e3b2568d3748cf822e2a083cb25839d[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Sun Oct 13 10:46:09 2024 +0300
+
+    final colorPicker
+
+[33mcommit a31ae995fe35c7b50ca25dae5cbff344406146b1[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Sun Oct 13 10:09:23 2024 +0300
+
+    fixing color picker
+
+[33mcommit 5724a24680eedbd99c4687e336acab706bfd0ab0[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Mon Oct 7 15:21:25 2024 +0300
+
+    labs java
+
+[33mcommit 938092648003ba6c6e5950b884b1f782b737d688[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Mon Sep 23 20:50:29 2024 +0300
+
+    matrix lab
+
+[33mcommit c7fc6d8b7bedbd26320b1a32cee8d654f9248bf2[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Tue Sep 17 20:43:11 2024 +0300
+
+    java lab
+
+[33mcommit 449ff2955cb6ae423532ed71798edca02b8fcbe8[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Sat Sep 14 22:37:15 2024 +0300
+
+    made .exe
+
+[33mcommit a4ff01ec05fca4d1a4adaecdd153eb8bc20cf4dc[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Sat Sep 14 21:04:16 2024 +0300
+
+    final colorPicker
+
+[33mcommit 0e1a892795210f28286c4b94227fc454d6c3b6aa[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Wed Sep 11 20:52:13 2024 +0300
+
+    color picker trouble
+
+[33mcommit 7d12893c1b26b569fa24cf04f07f618632c26d7c[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Mon Sep 9 11:06:52 2024 +0300
+
+    java lab
+
+[33mcommit b1e705e214ee6d824a20f5aa8daab39eaad5f1a0[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Mon Sep 9 08:53:32 2024 +0300
+
+    making color picker
+
+[33mcommit 95e4c5e5a11a5d2513729dd7bb213c79a965e323[m
+Author: TIMOFEY CHEBERUK <timofey13052005@gmail.com>
+Date:   Wed Sep 4 21:16:21 2024 +0300
+
+    syncronizing
+
+[33mcommit 231b3465eda8ff2134b860976a93cd0d4d705e6a[m
+Author: Timofey Cheberuk <timofey13052005@gmail.com>
+Date:   Wed Sep 4 19:37:58 2024 +0300
+
+    first commit

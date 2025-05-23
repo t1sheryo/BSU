@@ -26,7 +26,7 @@ struct CountData {
 DWORD WINAPI WorkThread(LPVOID lpParam) {
     WorkData* data = (WorkData*)lpParam;
 
-    
+
     WaitForSingleObject(data->hMutex, INFINITE);
 
     std::cout << "mutex";
@@ -62,7 +62,7 @@ DWORD WINAPI CountThread(LPVOID lpParam) {
 
     EnterCriticalSection(data->cs);
     cout << "Count thread started processing." << endl;
- 
+
 
     *(data->positiveCount) = 0;
     for (float num : *(data->arr)) {
@@ -123,7 +123,7 @@ int main() {
     CountData countData = { &arr, &cs, hEvent, &positiveCount };
     HANDLE hCount = CreateThread(NULL, 0, CountThread, &countData, 0, NULL);
     Sleep(1);
-    
+
     WaitForSingleObject(hMutex, INFINITE);
     std::cout << "mutex m";
 
@@ -134,7 +134,7 @@ int main() {
     cout << endl;
     ReleaseMutex(hMutex);
 
-    
+
     cout << "Main thread signaled Count to start." << endl;
     LeaveCriticalSection(&cs);
 

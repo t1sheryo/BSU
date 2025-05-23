@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню кафе</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        textarea {
+            width: 100%;
+            min-height: 80px;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .controls {
+            margin: 20px 0;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .pagination {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .pagination button {
+            padding: 5px 10px;
+        }
+        .pagination button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .search-box {
+            flex: 1;
+        }
+        .sort-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Управление меню кафе</h1>
+    
+    <div class="container">
+        <form id="menuForm">
+            <input type="hidden" id="dishId">
+            <input type="text" id="name" placeholder="Название блюда" required>
+            <textarea id="description" placeholder="Описание"></textarea>
+            <input type="number" id="price" placeholder="Цена" required>
+            <select id="category">
+                <option value="Салаты">Салаты</option>
+                <option value="Горячие блюда">Горячие блюда</option>
+                <option value="Десерты">Десерты</option>
+                <option value="Напитки">Напитки</option>
+            </select>
+            <button type="submit">Сохранить</button>
+        </form>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Поиск по названию...">
+            </div>
+            <div class="sort-controls">
+                <select id="sortSelect">
+                    <option value="name">По названию</option>
+                    <option value="price">По цене</option>
+                    <option value="category">По категории</option>
+                </select>
+                <button id="sortOrderBtn">↑</button>
+            </div>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Описание</th>
+                    <th>Цена</th>
+                    <th>Категория</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% menu.forEach(item => { %>
+                    <tr>
+                        <td><%= item.name %></td>
+                        <td><%= item.description %></td>
+                        <td><%= item.price %> руб.</td>
+                        <td><%= item.category %></td>
+                        <td>
+                            <button onclick="editItem('<%= item.name %>')">Изменить</button>
+                            <button onclick="deleteItem('<%= item.name %>')">Удалить</button>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <button id="prevPage" disabled>←</button>
+            <span id="pageInfo">Страница 1 из <%= totalPages %></span>
+            <button id="nextPage" <%= totalPages <= 1 ? 'disabled' : '' %>>→</button>
+        </div>
+    </div>
+    
+    <script src="/js/app.js"></script>
+</body>
+</html>
