@@ -12,14 +12,12 @@ using namespace std;
 struct WorkData {
     vector<float>* arr;
     HANDLE hMutex;
-    //HANDLE hWorkDone;
 };
 
 struct CountData {
     const vector<float>* arr;
     CRITICAL_SECTION* cs;
     HANDLE hEvent;
-    //HANDLE hWorkDone;
     int* positiveCount;
 };
 
@@ -29,7 +27,7 @@ DWORD WINAPI WorkThread(LPVOID lpParam) {
 
     WaitForSingleObject(data->hMutex, INFINITE);
 
-    std::cout << "mutex";
+    std::cout << "mutex was captured by work";
     int sleepTime = 0;
     cout << "Enter rest time interval (ms): ";
     cin >> sleepTime;
@@ -49,7 +47,6 @@ DWORD WINAPI WorkThread(LPVOID lpParam) {
 
     *(data->arr) = tempArr;
 
-    //SetEvent(data->hWorkDone);
     ReleaseMutex(data->hMutex);
 
     return 0;
@@ -57,8 +54,6 @@ DWORD WINAPI WorkThread(LPVOID lpParam) {
 
 DWORD WINAPI CountThread(LPVOID lpParam) {
     CountData* data = (CountData*)lpParam;
-
-    //WaitForSingleObject(data->hWorkDone, INFINITE);
 
     EnterCriticalSection(data->cs);
     cout << "Count thread started processing." << endl;
@@ -82,7 +77,6 @@ int main() {
 
     HANDLE hMutex = CreateMutex(NULL, FALSE, NULL);
     HANDLE hEvent = CreateEvent(NULL, FALSE, FALSE, NULL);
-    //HANDLE hWorkDone = CreateEvent(NULL, FALSE, FALSE, NULL);
     CRITICAL_SECTION cs;
     InitializeCriticalSection(&cs);
 
@@ -119,13 +113,14 @@ int main() {
 
     WorkData workData = { &arr, hMutex };
     HANDLE hWork = CreateThread(NULL, 0, WorkThread, &workData, 0, NULL);
+    
     EnterCriticalSection(&cs);
     CountData countData = { &arr, &cs, hEvent, &positiveCount };
     HANDLE hCount = CreateThread(NULL, 0, CountThread, &countData, 0, NULL);
     Sleep(1);
 
     WaitForSingleObject(hMutex, INFINITE);
-    std::cout << "mutex m";
+    std::cout << "mutex was captured by main";
 
     cout << "Final array (" << arr.size() << " elements): ";
     for (float num : arr) {
@@ -140,13 +135,10 @@ int main() {
 
     WaitForSingleObject(hEvent, INFINITE);
     cout << "Number of positive elements: " << positiveCount / 2 << endl;
-    //WaitForSingleObject(hWork, INFINITE);
     WaitForSingleObject(hCount, INFINITE);
-    //CloseHandle(hWork);
     CloseHandle(hCount);
     CloseHandle(hMutex);
     CloseHandle(hEvent);
-    //CloseHandle(hWorkDone);
     DeleteCriticalSection(&cs);
 
     return 0;
