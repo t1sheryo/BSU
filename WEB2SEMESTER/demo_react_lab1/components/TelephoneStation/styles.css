@@ -1,0 +1,22 @@
+/**
+ * CSS для компонента TelephoneStation.
+ * Используется для дополнительной стилизации помимо Material UI.
+ */
+
+.telephone-station-container {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+/* Дополнительные стили для улучшения внешнего вида */
+.telephone-station-container .MuiPaper-root {
+  border-radius: 8px;
+}
+
+.telephone-station-container .MuiList-root {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.telephone-station-container .MuiListItem-root:hover {
+  background-color: rgba(25, 118, 210, 0.08);
+}

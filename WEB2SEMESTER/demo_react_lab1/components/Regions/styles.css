@@ -1,0 +1,25 @@
+/**
+ * CSS для компонента Regions.
+ *
+ * Поскольку CSS использует глобальное пространство имен для классов, мы используем соглашение об именовании,
+ * которое включает React приложение и компонент в имени класса. Надеемся, что другие таблицы стилей,
+ * которые вы используете, не будут конфликтовать с этими именами.
+ */
+
+.regions-container {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+/* Дополнительные стили для улучшения внешнего вида */
+.regions-container .MuiPaper-root {
+  border-radius: 8px;
+}
+
+.regions-container .MuiList-root {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.regions-container .MuiListItem-root:hover {
+  background-color: rgba(25, 118, 210, 0.08);
+}
