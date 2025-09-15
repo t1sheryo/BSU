@@ -27,14 +27,15 @@ const Regions = () => {
     setFilteredRegions(regions);
   }, []);
 
-  // Фильтруем области при изменении поисковой строки
+  // Фильтруем области при изменении поисковой строки и сортируем результат
   useEffect(() => {
     if (!searchSubstring.trim()) {
-      setFilteredRegions(allRegions);
+      const sorted = [...allRegions].sort((a, b) => a.localeCompare(b, 'ru'));
+      setFilteredRegions(sorted);
     } else {
-      const filtered = allRegions.filter(region =>
-        region.toLowerCase().includes(searchSubstring.toLowerCase())
-      );
+      const filtered = allRegions
+        .filter(region => region.toLowerCase().includes(searchSubstring.toLowerCase()))
+        .sort((a, b) => a.localeCompare(b, 'ru'));
       setFilteredRegions(filtered);
     }
   }, [searchSubstring, allRegions]);

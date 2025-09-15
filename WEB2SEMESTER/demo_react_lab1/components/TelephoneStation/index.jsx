@@ -27,14 +27,15 @@ const TelephoneStation = () => {
     setFilteredServices(services);
   }, []);
 
-  // Фильтруем сервисы при изменении поисковой строки
+  // Фильтруем сервисы при изменении поисковой строки и сортируем результат
   useEffect(() => {
     if (!searchSubstring.trim()) {
-      setFilteredServices(allServices);
+      const sorted = [...allServices].sort((a, b) => a.localeCompare(b, 'ru'));
+      setFilteredServices(sorted);
     } else {
-      const filtered = allServices.filter(service =>
-        service.toLowerCase().includes(searchSubstring.toLowerCase())
-      );
+      const filtered = allServices
+        .filter(service => service.toLowerCase().includes(searchSubstring.toLowerCase()))
+        .sort((a, b) => a.localeCompare(b, 'ru'));
       setFilteredServices(filtered);
     }
   }, [searchSubstring, allServices]);
