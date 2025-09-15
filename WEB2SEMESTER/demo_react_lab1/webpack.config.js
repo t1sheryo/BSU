@@ -3,6 +3,7 @@ module.exports = {
     gettingStarted: "./gettingStarted.jsx",
     p2: "./p2.jsx",
     p2_telephone: "./p2_telephone.jsx",
+    app: "./app.jsx",
   },
   module: {
     rules: [
