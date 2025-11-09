@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+          http://www.liquibase.org/xml/ns/dbchangelog
+          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <!-- ================== 1. Абоненты ================== -->
+    <changeSet id="1-insert-subscribers" author="admin">
+        <insert tableName="subscribers">
+            <column name="id" valueNumeric="1"/>
+            <column name="name" value="Иван Петров"/>
+            <column name="phone_number" value="79001112233"/>
+            <column name="is_blocked" valueBoolean="false"/>
+        </insert>
+        <insert tableName="subscribers">
+            <column name="id" valueNumeric="2"/>
+            <column name="name" value="Мария Иванова"/>
+            <column name="phone_number" value="79005556677"/>
+            <column name="is_blocked" valueBoolean="false"/>
+        </insert>
+        <insert tableName="subscribers">
+            <column name="id" valueNumeric="3"/>
+            <column name="name" value="Андрей Сидоров"/>
+            <column name="phone_number" value="79009998877"/>
+            <column name="is_blocked" valueBoolean="true"/>
+        </insert>
+        <insert tableName="subscribers">
+            <column name="id" valueNumeric="4"/>
+            <column name="name" value="Ольга Кузнецова"/>
+            <column name="phone_number" value="79003334455"/>
+            <column name="is_blocked" valueBoolean="false"/>
+        </insert>
+        <insert tableName="subscribers">
+            <column name="id" valueNumeric="5"/>
+            <column name="name" value="Дмитрий Смирнов"/>
+            <column name="phone_number" value="79007778899"/>
+            <column name="is_blocked" valueBoolean="false"/>
+        </insert>
+    </changeSet>
+
+    <!-- ================== 2. Услуги ================== -->
+    <changeSet id="2-insert-services" author="admin">
+        <insert tableName="services">
+            <column name="id" valueNumeric="1"/>
+            <column name="name" value="Интернет"/>
+            <column name="monthly_fee" valueNumeric="350.00"/>
+        </insert>
+        <insert tableName="services">
+            <column name="id" valueNumeric="2"/>
+            <column name="name" value="Межгород"/>
+            <column name="monthly_fee" valueNumeric="200.00"/>
+        </insert>
+        <insert tableName="services">
+            <column name="id" valueNumeric="3"/>
+            <column name="name" value="SMS-пакет"/>
+            <column name="monthly_fee" valueNumeric="100.00"/>
+        </insert>
+        <insert tableName="services">
+            <column name="id" valueNumeric="4"/>
+            <column name="name" value="Роуминг"/>
+            <column name="monthly_fee" valueNumeric="500.00"/>
+        </insert>
+        <insert tableName="services">
+            <column name="id" valueNumeric="5"/>
+            <column name="name" value="Антивирус"/>
+            <column name="monthly_fee" valueNumeric="150.00"/>
+        </insert>
+    </changeSet>
+
+    <!-- ================== 3. Услуги, подключённые абонентам ================== -->
+    <changeSet id="3-insert-subscriber-services" author="admin">
+        <!-- Иван Петров -->
+        <insert tableName="subscriber_services">
+            <column name="subscriber_id" valueNumeric="1"/>
+            <column name="service_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="subscriber_services">
+            <column name="subscriber_id" valueNumeric="1"/>
+            <column name="service_id" valueNumeric="2"/>
+        </insert>
+
+        <!-- Мария Иванова -->
+        <insert tableName="subscriber_services">
+            <column name="subscriber_id" valueNumeric="2"/>
+            <column name="service_id" valueNumeric="3"/>
+        </insert>
+        <insert tableName="subscriber_services">
+            <column name="subscriber_id" valueNumeric="2"/>
+            <column name="service_id" valueNumeric="5"/>
+        </insert>
+
+        <!-- Андрей Сидоров -->
+        <insert tableName="subscriber_services">
+            <column name="subscriber_id" valueNumeric="3"/>
+            <column name="service_id" valueNumeric="2"/>
+        </insert>
+
+        <!-- Ольга Кузнецова -->
+        <insert tableName="subscriber_services">
+            <column name="subscriber_id" valueNumeric="4"/>
+            <column name="service_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="subscriber_services">
+            <column name="subscriber_id" valueNumeric="4"/>
+            <column name="service_id" valueNumeric="3"/>
+        </insert>
+        <insert tableName="subscriber_services">
+            <column name="subscriber_id" valueNumeric="4"/>
+            <column name="service_id" valueNumeric="4"/>
+        </insert>
+
+        <!-- Дмитрий Смирнов -->
+        <insert tableName="subscriber_services">
+            <column name="subscriber_id" valueNumeric="5"/>
+            <column name="service_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="subscriber_services">
+            <column name="subscriber_id" valueNumeric="5"/>
+            <column name="service_id" valueNumeric="5"/>
+        </insert>
+    </changeSet>
+
+    <!-- ================== 4. Счета ================== -->
+    <changeSet id="4-insert-bills" author="admin">
+        <insert tableName="bills">
+            <column name="id" valueNumeric="1"/>
+            <column name="subscriber_id" valueNumeric="1"/>
+            <column name="amount" valueNumeric="550.00"/>
+            <column name="is_paid" valueBoolean="false"/>
+        </insert>
+        <insert tableName="bills">
+            <column name="id" valueNumeric="2"/>
+            <column name="subscriber_id" valueNumeric="2"/>
+            <column name="amount" valueNumeric="250.00"/>
+            <column name="is_paid" valueBoolean="true"/>
+        </insert>
+        <insert tableName="bills">
+            <column name="id" valueNumeric="3"/>
+            <column name="subscriber_id" valueNumeric="3"/>
+            <column name="amount" valueNumeric="800.00"/>
+            <column name="is_paid" valueBoolean="false"/>
+        </insert>
+        <insert tableName="bills">
+            <column name="id" valueNumeric="4"/>
+            <column name="subscriber_id" valueNumeric="4"/>
+            <column name="amount" valueNumeric="450.00"/>
+            <column name="is_paid" valueBoolean="true"/>
+        </insert>
+        <insert tableName="bills">
+            <column name="id" valueNumeric="5"/>
+            <column name="subscriber_id" valueNumeric="5"/>
+            <column name="amount" valueNumeric="300.00"/>
+            <column name="is_paid" valueBoolean="false"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
