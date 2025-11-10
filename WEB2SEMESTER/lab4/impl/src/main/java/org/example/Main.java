@@ -21,11 +21,26 @@ public class Main {
     private final BillDAO billDAO = new BillDAO();
 
     public static void main(String[] args) {
-        PhoneStationApp app = new PhoneStationApp();
+        Main app = new Main();
         app.run();
     }
 
     public void run() {
+        JPAUtil.printDatabaseInfo();
+
+        // Проверка подключения к PostgreSQL
+        if (!JPAUtil.testConnection()) {
+            System.out.println("❌ Не удалось подключиться к PostgreSQL!");
+            System.out.println("Проверьте:");
+            System.out.println("1. Запущен ли PostgreSQL сервер");
+            System.out.println("2. Правильность настроек в persistence.xml");
+            System.out.println("3. Существует ли база данных 'phone_station'");
+            System.out.println("4. Правильность имени пользователя и пароля");
+            return;
+        }
+
+        System.out.println("✅ Подключение к PostgreSQL успешно!");
+
         boolean running = true;
 
         while (running) {

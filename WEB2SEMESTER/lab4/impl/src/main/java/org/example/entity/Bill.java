@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "bills")
+@Table(name = "bills_lab_4")
 @NamedQueries({
         @NamedQuery(name = "Bill.findAll", query = "SELECT b FROM Bill b"),
         @NamedQuery(name = "Bill.findBySubscriber",

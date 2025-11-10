@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "services")
+@Table(name = "services_lab_4")
 @NamedQueries({
         @NamedQuery(name = "Service.findAll", query = "SELECT s FROM Service s"),
         @NamedQuery(name = "Service.findActive", query = "SELECT s FROM Service s WHERE s.isActive = true"),

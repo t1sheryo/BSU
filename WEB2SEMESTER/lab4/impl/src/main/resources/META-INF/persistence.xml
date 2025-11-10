@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0"
+             xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+                                 https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+    <persistence-unit name="phone_station_pu" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <class>org.example.entity.Subscriber</class>
+        <class>org.example.entity.Service</class>
+        <class>org.example.entity.Bill</class>
+
+        <properties>
+            <!-- Драйвер PostgreSQL -->
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+
+            <!-- URL базы данных PostgreSQL -->
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/web"/>
+
+            <!-- Имя пользователя БД -->
+            <property name="jakarta.persistence.jdbc.user" value="postgres"/>
+
+            <!-- Пароль БД -->
+            <property name="jakarta.persistence.jdbc.password" value="12345"/>
+
+            <!-- Генерация таблиц автоматически -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+
+            <!-- Показывать SQL запросы -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+
+            <!-- Диалект PostgreSQL -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+        </properties>
+    </persistence-unit>
+</persistence>

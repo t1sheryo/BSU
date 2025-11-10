@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "subscribers")
+@Table(name = "subscribers_lab_4")
 @NamedQueries({
         @NamedQuery(name = "Subscriber.findAll", query = "SELECT s FROM Subscriber s"),
         @NamedQuery(name = "Subscriber.findByPhoneNumber",
