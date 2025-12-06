@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title mb-3">Сервисы</h5>
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let s of (services$ | async) ?? []">
+        <span>{{ s.description }} — {{ s.price }} BYN</span>
+        <button class="btn btn-sm btn-outline-primary" (click)="selectService(s)">Подробнее</button>
+      </li>
+    </ul>
+  </div>
+  
+</div>
+
+
