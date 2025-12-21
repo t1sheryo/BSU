@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Абоненты</title>
+</head>
+<body>
+<h1>Абоненты</h1>
+
+<p><a th:href="@{/}">На главную</a></p>
+
+<div th:if="${message}">
+    <p th:text="${message}"></p>
+</div>
+
+<p><a th:href="@{/subscribers/new}">Добавить абонента</a></p>
+
+<table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Телефон</th>
+        <th>Адрес</th>
+        <th>Заблокирован</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s : ${subscribers}">
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.firstName}"></td>
+        <td th:text="${s.lastName}"></td>
+        <td th:text="${s.phoneNumber}"></td>
+        <td th:text="${s.address}"></td>
+        <td th:text="${s.isBlocked}"></td>
+        <td>
+            <a th:href="@{/subscribers/{id}/edit(id=${s.id})}">Редактировать</a>
+            <form th:action="@{/subscribers/{id}/delete(id=${s.id})}" method="post" style="display:inline">
+                <button type="submit">Удалить</button>
+            </form>
+            <a th:href="@{/bills(subscriberId=${s.id})}">Счета</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

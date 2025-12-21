@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Счет</title>
+</head>
+<body>
+<h1>Новый счет</h1>
+
+<p><a th:href="@{/bills}">Назад</a></p>
+
+<form th:action="@{/bills}" method="post">
+    <div>
+        <label>Абонент</label>
+        <select name="subscriberId" required>
+            <option value="" disabled selected>-- выбрать --</option>
+            <option th:each="s : ${subscribers}"
+                    th:value="${s.id}"
+                    th:text="${s.firstName + ' ' + s.lastName + ' (' + s.phoneNumber + ')'}"></option>
+        </select>
+    </div>
+
+    <div>
+        <label>Сумма</label>
+        <input type="number" step="0.01" name="amount" required>
+    </div>
+
+    <div>
+        <label>Срок оплаты (dueDate)</label>
+        <input type="datetime-local" name="dueDate">
+    </div>
+
+    <div>
+        <button type="submit">Сохранить</button>
+    </div>
+</form>
+
+</body>
+</html>

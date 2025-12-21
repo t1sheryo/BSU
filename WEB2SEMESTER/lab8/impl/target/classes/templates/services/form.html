@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Услуга</title>
+</head>
+<body>
+<h1 th:text="${service.id == null ? 'Новая услуга' : 'Редактирование услуги'}"></h1>
+
+<p><a th:href="@{/services}">Назад</a></p>
+
+<form th:action="${service.id == null} ? @{/services} : @{/services/{id}(id=${service.id})}" method="post">
+    <div>
+        <label>Название</label>
+        <input type="text" th:field="${service.name}" required>
+    </div>
+    <div>
+        <label>Описание</label>
+        <input type="text" th:field="${service.description}">
+    </div>
+    <div>
+        <label>Абонплата</label>
+        <input type="number" step="0.01" th:field="${service.monthlyFee}">
+    </div>
+    <div>
+        <label>Активна</label>
+        <input type="checkbox" th:field="${service.isActive}">
+    </div>
+    <div>
+        <button type="submit">Сохранить</button>
+    </div>
+</form>
+
+</body>
+</html>

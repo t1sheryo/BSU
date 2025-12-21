@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Услуги</title>
+</head>
+<body>
+<h1>Услуги</h1>
+
+<p><a th:href="@{/}">На главную</a></p>
+
+<div th:if="${message}">
+    <p th:text="${message}"></p>
+</div>
+
+<p><a th:href="@{/services/new}">Добавить услугу</a></p>
+
+<table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Абонплата</th>
+        <th>Активна</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s : ${services}">
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.name}"></td>
+        <td th:text="${s.description}"></td>
+        <td th:text="${s.monthlyFee}"></td>
+        <td th:text="${s.isActive}"></td>
+        <td>
+            <a th:href="@{/services/{id}/edit(id=${s.id})}">Редактировать</a>
+            <form th:action="@{/services/{id}/delete(id=${s.id})}" method="post" style="display:inline">
+                <button type="submit">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

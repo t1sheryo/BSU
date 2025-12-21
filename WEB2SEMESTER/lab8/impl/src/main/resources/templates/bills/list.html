@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Счета</title>
+</head>
+<body>
+<h1>Счета</h1>
+
+<p><a th:href="@{/}">На главную</a></p>
+
+<div th:if="${message}">
+    <p th:text="${message}"></p>
+</div>
+
+<form th:action="@{/bills}" method="get">
+    <label>Фильтр по абоненту:</label>
+    <select name="subscriberId">
+        <option value="">(все)</option>
+        <option th:each="s : ${subscribers}"
+                th:value="${s.id}"
+                th:selected="${subscriberId != null and subscriberId == s.id}"
+                th:text="${s.firstName + ' ' + s.lastName + ' (' + s.phoneNumber + ')'}"></option>
+    </select>
+    <button type="submit">Показать</button>
+</form>
+
+<p><a th:href="@{/bills/new}">Создать счет</a></p>
+
+<table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Абонент</th>
+        <th>Сумма</th>
+        <th>Выдан</th>
+        <th>Срок</th>
+        <th>Оплачен</th>
+        <th>Дата оплаты</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="b : ${bills}">
+        <td th:text="${b.id}"></td>
+        <td th:text="${b.subscriber != null ? (b.subscriber.firstName + ' ' + b.subscriber.lastName) : ''}"></td>
+        <td th:text="${b.amount}"></td>
+        <td th:text="${b.issueDate}"></td>
+        <td th:text="${b.dueDate}"></td>
+        <td th:text="${b.isPaid}"></td>
+        <td th:text="${b.paymentDate}"></td>
+        <td>
+            <form th:if="${b.isPaid == false}" th:action="@{/bills/{id}/pay(id=${b.id})}" method="post" style="display:inline">
+                <button type="submit">Оплатить</button>
+            </form>
+            <form th:action="@{/bills/{id}/delete(id=${b.id})}" method="post" style="display:inline">
+                <button type="submit">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

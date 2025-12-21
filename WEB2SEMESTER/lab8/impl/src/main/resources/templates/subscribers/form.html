@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Абонент</title>
+</head>
+<body>
+<h1 th:text="${subscriber.id == null ? 'Новый абонент' : 'Редактирование абонента'}"></h1>
+
+<p><a th:href="@{/subscribers}">Назад</a></p>
+
+<form th:action="${subscriber.id == null} ? @{/subscribers} : @{/subscribers/{id}(id=${subscriber.id})}" method="post">
+    <div>
+        <label>Имя</label>
+        <input type="text" th:field="${subscriber.firstName}" required>
+    </div>
+    <div>
+        <label>Фамилия</label>
+        <input type="text" th:field="${subscriber.lastName}" required>
+    </div>
+    <div>
+        <label>Телефон</label>
+        <input type="text" th:field="${subscriber.phoneNumber}" required>
+    </div>
+    <div>
+        <label>Адрес</label>
+        <input type="text" th:field="${subscriber.address}">
+    </div>
+    <div>
+        <label>Заблокирован</label>
+        <input type="checkbox" th:field="${subscriber.isBlocked}">
+    </div>
+    <div>
+        <button type="submit">Сохранить</button>
+    </div>
+</form>
+
+</body>
+</html>
