@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Галерея изображений</string>
+    <string name="button_pick_image">Выбрать изображение</string>
+    <string name="uri_placeholder">URI: не выбран</string>
+    <string name="uri_value">URI: %1$s</string>
+    <string name="placeholder_image_content_description">Изображение-заглушка</string>
+    <string name="selected_image_content_description">Выбранное изображение</string>
+    <string name="error_image_not_selected">Изображение не выбрано</string>
+    <string name="error_saved_uri_unavailable">Сохраненный URI недоступен</string>
+</resources>

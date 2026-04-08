@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${currentLocale}">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{bills.title}">Счета</title>
+</head>
+<body>
+<h1 th:text="#{bills.title}">Счета</h1>
+
+<p><a th:href="@{/}" th:text="#{nav.home}">На главную</a></p>
+
+<p>
+    <a th:href="@{/bills(lang='ru', subscriberId=${subscriberId})}" th:text="#{lang.ru}">Русский</a>
+    <a th:href="@{/bills(lang='en', subscriberId=${subscriberId})}" th:text="#{lang.en}">English</a>
+    <a th:href="@{/bills(lang='de', subscriberId=${subscriberId})}" th:text="#{lang.de}">Deutsch</a>
+</p>
+
+<div th:if="${message}">
+    <p th:text="${message}"></p>
+</div>
+
+<form th:action="@{/bills}" method="get">
+    <label th:text="#{bills.filter.label}">Фильтр по абоненту:</label>
+    <select name="subscriberId">
+        <option value="" th:text="#{bills.filter.all}">(все)</option>
+        <option th:each="s : ${subscribers}"
+                th:value="${s.id}"
+                th:selected="${subscriberId != null and subscriberId == s.id}"
+                th:text="${s.firstName + ' ' + s.lastName + ' (' + s.phoneNumber + ')'}"></option>
+    </select>
+    <button type="submit" th:text="#{bills.filter.show}">Показать</button>
+</form>
+
+<p><a th:href="@{/bills/new}" th:text="#{bills.add}">Создать счет</a></p>
+
+<table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+    <tr>
+        <th th:text="#{bills.table.id}">ID</th>
+        <th th:text="#{bills.table.subscriber}">Абонент</th>
+        <th th:text="#{bills.table.amount}">Сумма</th>
+        <th th:text="#{bills.table.issueDate}">Выдан</th>
+        <th th:text="#{bills.table.dueDate}">Срок</th>
+        <th th:text="#{bills.table.paid}">Оплачен</th>
+        <th th:text="#{bills.table.paymentDate}">Дата оплаты</th>
+        <th th:text="#{bills.table.actions}">Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="b : ${bills}">
+        <td th:text="${b.id}"></td>
+        <td th:text="${b.subscriber != null ? (b.subscriber.firstName + ' ' + b.subscriber.lastName) : ''}"></td>
+        <td th:text="${b.amount}"></td>
+        <td th:text="${b.issueDate}"></td>
+        <td th:text="${b.dueDate}"></td>
+        <td th:text="${b.isPaid}"></td>
+        <td th:text="${b.paymentDate}"></td>
+        <td>
+            <form th:if="${b.isPaid == false}" th:action="@{/bills/{id}/pay(id=${b.id})}" method="post" style="display:inline">
+                <button type="submit" th:text="#{bills.action.pay}">Оплатить</button>
+            </form>
+            <form th:action="@{/bills/{id}/delete(id=${b.id})}" method="post" style="display:inline">
+                <button type="submit" th:text="#{bills.action.delete}">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div th:if="${totalPages != null and totalPages > 1}">
+    <div>
+        <a th:if="${currentPage > 0}"
+           th:href="@{/bills(page=${currentPage - 1}, size=${pageSize}, subscriberId=${subscriberId})}"
+           th:text="#{pagination.previous}">Previous</a>
+        <span th:unless="${currentPage > 0}" th:text="#{pagination.previous}">Previous</span>
+
+        <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+            <a th:if="${i != currentPage}"
+               th:href="@{/bills(page=${i}, size=${pageSize}, subscriberId=${subscriberId})}"
+               th:text="${i + 1}"></a>
+            <span th:if="${i == currentPage}" th:text="${i + 1}"></span>
+        </span>
+
+        <a th:if="${currentPage + 1 < totalPages}"
+           th:href="@{/bills(page=${currentPage + 1}, size=${pageSize}, subscriberId=${subscriberId})}"
+           th:text="#{pagination.next}">Next</a>
+        <span th:unless="${currentPage + 1 < totalPages}" th:text="#{pagination.next}">Next</span>
+    </div>
+</div>
+
+</body>
+</html>

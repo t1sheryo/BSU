@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${currentLocale}">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{services.title}">Услуги</title>
+</head>
+<body>
+<h1 th:text="#{services.title}">Услуги</h1>
+
+<p><a th:href="@{/}" th:text="#{nav.home}">На главную</a></p>
+
+<p>
+    <a th:href="@{/services(lang='ru')}" th:text="#{lang.ru}">Русский</a>
+    <a th:href="@{/services(lang='en')}" th:text="#{lang.en}">English</a>
+    <a th:href="@{/services(lang='de')}" th:text="#{lang.de}">Deutsch</a>
+</p>
+
+<div th:if="${message}">
+    <p th:text="${message}"></p>
+</div>
+
+<p><a th:href="@{/services/new}" th:text="#{services.add}">Добавить услугу</a></p>
+
+<table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+    <tr>
+        <th th:text="#{services.table.id}">ID</th>
+        <th th:text="#{services.table.name}">Название</th>
+        <th th:text="#{services.table.description}">Описание</th>
+        <th th:text="#{services.table.fee}">Абонплата</th>
+        <th th:text="#{services.table.active}">Активна</th>
+        <th th:text="#{services.table.actions}">Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s : ${services}">
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.name}"></td>
+        <td th:text="${s.description}"></td>
+        <td th:text="${s.monthlyFee}"></td>
+        <td th:text="${s.isActive}"></td>
+        <td>
+            <a th:href="@{/services/{id}/edit(id=${s.id})}" th:text="#{services.action.edit}">Редактировать</a>
+            <form th:action="@{/services/{id}/delete(id=${s.id})}" method="post" style="display:inline">
+                <button type="submit" th:text="#{services.action.delete}">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div th:if="${totalPages != null and totalPages > 1}">
+    <div>
+        <a th:if="${currentPage > 0}" th:href="@{/services(page=${currentPage - 1}, size=${pageSize})}" th:text="#{pagination.previous}">Previous</a>
+        <span th:unless="${currentPage > 0}" th:text="#{pagination.previous}">Previous</span>
+
+        <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+            <a th:if="${i != currentPage}" th:href="@{/services(page=${i}, size=${pageSize})}" th:text="${i + 1}"></a>
+            <span th:if="${i == currentPage}" th:text="${i + 1}"></span>
+        </span>
+
+        <a th:if="${currentPage + 1 < totalPages}" th:href="@{/services(page=${currentPage + 1}, size=${pageSize})}" th:text="#{pagination.next}">Next</a>
+        <span th:unless="${currentPage + 1 < totalPages}" th:text="#{pagination.next}">Next</span>
+    </div>
+</div>
+
+</body>
+</html>

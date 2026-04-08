@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${currentLocale}">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{subscribers.title}">Абоненты</title>
+</head>
+<body>
+<h1 th:text="#{subscribers.title}">Абоненты</h1>
+
+<p><a th:href="@{/}" th:text="#{nav.home}">На главную</a></p>
+
+<p>
+    <a th:href="@{/subscribers(lang='ru')}" th:text="#{lang.ru}">Русский</a>
+    <a th:href="@{/subscribers(lang='en')}" th:text="#{lang.en}">English</a>
+    <a th:href="@{/subscribers(lang='de')}" th:text="#{lang.de}">Deutsch</a>
+</p>
+
+<div th:if="${message}">
+    <p th:text="${message}"></p>
+</div>
+
+<p><a th:href="@{/subscribers/new}" th:text="#{subscribers.add}">Добавить абонента</a></p>
+
+<table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+    <tr>
+        <th th:text="#{subscribers.table.id}">ID</th>
+        <th th:text="#{subscribers.table.firstName}">Имя</th>
+        <th th:text="#{subscribers.table.lastName}">Фамилия</th>
+        <th th:text="#{subscribers.table.phone}">Телефон</th>
+        <th th:text="#{subscribers.table.address}">Адрес</th>
+        <th th:text="#{subscribers.table.blocked}">Заблокирован</th>
+        <th th:text="#{subscribers.table.actions}">Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s : ${subscribers}">
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.firstName}"></td>
+        <td th:text="${s.lastName}"></td>
+        <td th:text="${s.phoneNumber}"></td>
+        <td th:text="${s.address}"></td>
+        <td th:text="${s.isBlocked}"></td>
+        <td>
+            <a th:href="@{/subscribers/{id}/edit(id=${s.id})}" th:text="#{subscribers.action.edit}">Редактировать</a>
+            <form th:action="@{/subscribers/{id}/delete(id=${s.id})}" method="post" style="display:inline">
+                <button type="submit" th:text="#{subscribers.action.delete}">Удалить</button>
+            </form>
+            <a th:href="@{/bills(subscriberId=${s.id})}" th:text="#{subscribers.action.bills}">Счета</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div th:if="${totalPages != null and totalPages > 1}">
+    <div>
+        <a th:if="${currentPage > 0}" th:href="@{/subscribers(page=${currentPage - 1}, size=${pageSize})}" th:text="#{pagination.previous}">Previous</a>
+        <span th:unless="${currentPage > 0}" th:text="#{pagination.previous}">Previous</span>
+
+        <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+            <a th:if="${i != currentPage}" th:href="@{/subscribers(page=${i}, size=${pageSize})}" th:text="${i + 1}"></a>
+            <span th:if="${i == currentPage}" th:text="${i + 1}"></span>
+        </span>
+
+        <a th:if="${currentPage + 1 < totalPages}" th:href="@{/subscribers(page=${currentPage + 1}, size=${pageSize})}" th:text="#{pagination.next}">Next</a>
+        <span th:unless="${currentPage + 1 < totalPages}" th:text="#{pagination.next}">Next</span>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${currentLocale}">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{subscribers.form.title}">Абонент</title>
+</head>
+<body>
+<h1 th:text="${subscriber.id == null} ? #{subscribers.form.new} : #{subscribers.form.edit}"></h1>
+
+<p><a th:href="@{/subscribers}" th:text="#{subscribers.form.back}">Назад</a></p>
+
+<p>
+    <a th:href="@{/subscribers/new(lang='ru')}" th:text="#{lang.ru}">Русский</a>
+    <a th:href="@{/subscribers/new(lang='en')}" th:text="#{lang.en}">English</a>
+    <a th:href="@{/subscribers/new(lang='de')}" th:text="#{lang.de}">Deutsch</a>
+</p>
+
+<form th:action="${subscriber.id == null} ? @{/subscribers} : @{/subscribers/{id}(id=${subscriber.id})}" method="post">
+    <div>
+        <label th:text="#{subscribers.form.firstName}">Имя</label>
+        <input type="text" th:field="${subscriber.firstName}" required>
+    </div>
+    <div>
+        <label th:text="#{subscribers.form.lastName}">Фамилия</label>
+        <input type="text" th:field="${subscriber.lastName}" required>
+    </div>
+    <div>
+        <label th:text="#{subscribers.form.phone}">Телефон</label>
+        <input type="text" th:field="${subscriber.phoneNumber}" required>
+    </div>
+    <div>
+        <label th:text="#{subscribers.form.address}">Адрес</label>
+        <input type="text" th:field="${subscriber.address}">
+    </div>
+    <div>
+        <label th:text="#{subscribers.form.blocked}">Заблокирован</label>
+        <input type="checkbox" th:field="${subscriber.isBlocked}">
+    </div>
+    <div>
+        <button type="submit" th:text="#{subscribers.form.save}">Сохранить</button>
+    </div>
+</form>
+
+</body>
+</html>

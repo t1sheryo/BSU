@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"math","l":"Rational.FieldComparator"},{"p":"math","l":"Main"},{"p":"math","l":"Rational"},{"p":"math","l":"Rational.SortField"}];updateSearchResults();

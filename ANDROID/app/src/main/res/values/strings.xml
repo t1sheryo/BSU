@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Image Gallery</string>
+    <string name="button_pick_image">Choose image</string>
+    <string name="uri_placeholder">URI: not selected</string>
+    <string name="uri_value">URI: %1$s</string>
+    <string name="placeholder_image_content_description">Placeholder image</string>
+    <string name="selected_image_content_description">Selected image</string>
+    <string name="error_image_not_selected">Image was not selected</string>
+    <string name="error_saved_uri_unavailable">Saved image URI is unavailable</string>
+</resources>

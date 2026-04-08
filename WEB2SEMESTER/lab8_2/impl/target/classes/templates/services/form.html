@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${currentLocale}">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{services.form.title}">Услуга</title>
+</head>
+<body>
+<h1 th:text="${service.id == null} ? #{services.form.new} : #{services.form.edit}"></h1>
+
+<p><a th:href="@{/services}" th:text="#{services.form.back}">Назад</a></p>
+
+<p>
+    <a th:href="@{/services/new(lang='ru')}" th:text="#{lang.ru}">Русский</a>
+    <a th:href="@{/services/new(lang='en')}" th:text="#{lang.en}">English</a>
+    <a th:href="@{/services/new(lang='de')}" th:text="#{lang.de}">Deutsch</a>
+</p>
+
+<form th:action="${service.id == null} ? @{/services} : @{/services/{id}(id=${service.id})}" method="post">
+    <div>
+        <label th:text="#{services.form.name}">Название</label>
+        <input type="text" th:field="${service.name}" required>
+    </div>
+    <div>
+        <label th:text="#{services.form.description}">Описание</label>
+        <input type="text" th:field="${service.description}">
+    </div>
+    <div>
+        <label th:text="#{services.form.fee}">Абонплата</label>
+        <input type="number" step="0.01" th:field="${service.monthlyFee}">
+    </div>
+    <div>
+        <label th:text="#{services.form.active}">Активна</label>
+        <input type="checkbox" th:field="${service.isActive}">
+    </div>
+    <div>
+        <button type="submit" th:text="#{services.form.save}">Сохранить</button>
+    </div>
+</form>
+
+</body>
+</html>

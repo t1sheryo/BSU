@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доступные сервисы - Телефонная станция</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Телефонная станция</h1>
+            <p class="subtitle">Доступные сервисы</p>
+        </header>
+
+        <nav class="menu">
+            <ul>
+                <li><a th:href="@{/}">Главная</a></li>
+                <li><a th:href="@{/services}">Все сервисы</a></li>
+                <li><a th:href="@{/services/available}">Доступные сервисы</a></li>
+                <li><a th:href="@{/services/create}">Добавить сервис</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <div class="page-header">
+                <h2>Доступные сервисы</h2>
+            </div>
+
+            <div th:if="${services != null and !services.isEmpty()}" class="services-grid">
+                <div th:each="service : ${services}" class="service-card">
+                    <h3 th:text="${service.name}">Название</h3>
+                    <p class="service-description" th:text="${service.description}">Описание</p>
+                    <div class="service-footer">
+                        <span class="service-price" th:text="${#numbers.formatDecimal(service.price, 1, 2)} + ' руб.'">0.00 руб.</span>
+                        <a th:href="@{'/services/' + ${service.id}}" class="btn btn-sm btn-info">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+
+            <div th:if="${services == null or services.isEmpty()}" class="empty-state">
+                <p>Доступные сервисы не найдены</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Телефонная станция. Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+</html>
+

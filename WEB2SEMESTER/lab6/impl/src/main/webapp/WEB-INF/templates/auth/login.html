@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход в систему - Телефонная станция</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Телефонная станция</h1>
+            <p class="subtitle">Вход в систему</p>
+        </header>
+
+        <nav class="menu">
+            <ul>
+                <li><a th:href="@{/home}">Главная</a></li>
+                <li><a th:href="@{/register}">Регистрация</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <div class="auth-form">
+                <h2>Вход в систему</h2>
+                
+                <div th:if="${error != null}" class="alert alert-error">
+                    <p th:text="${error}">Ошибка</p>
+                </div>
+                
+                <form th:action="@{/login}" method="post">
+                    <div class="form-group">
+                        <label for="username">Имя пользователя:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Пароль:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Войти</button>
+                </form>
+                
+                <p class="auth-link">
+                    Нет аккаунта? <a th:href="@{/register}">Зарегистрироваться</a>
+                </p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Телефонная станция. Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+</html>
+

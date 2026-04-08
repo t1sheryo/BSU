@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ошибка - Телефонная станция</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Телефонная станция</h1>
+            <p class="subtitle">Ошибка</p>
+        </header>
+
+        <nav class="menu">
+            <ul>
+                <li><a th:href="@{/}">Главная</a></li>
+                <li><a th:href="@{/services}">Все сервисы</a></li>
+                <li><a th:href="@{/services/available}">Доступные сервисы</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <div class="error-container">
+                <div class="error-icon">⚠️</div>
+                <h2>Произошла ошибка</h2>
+                
+                <div class="error-details">
+                    <p class="error-message" th:text="${errorMessage}">Неизвестная ошибка</p>
+                    <p class="error-code" th:if="${statusCode != null}">
+                        Код ошибки: <span th:text="${statusCode}">500</span>
+                    </p>
+                </div>
+
+                <div class="error-actions">
+                    <a th:href="@{/}" class="btn btn-primary">Вернуться на главную</a>
+                    <a th:href="@{/services}" class="btn btn-secondary">К списку сервисов</a>
+                </div>
+
+                <div th:if="${exception != null}" class="error-stack">
+                    <details>
+                        <summary>Техническая информация</summary>
+                        <pre th:text="${exception.toString()}"></pre>
+                    </details>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Телефонная станция. Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+</html>
+

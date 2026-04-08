@@ -1,0 +1,13 @@
+com\app\lab8\repository\SubscriberRepository.class
+com\app\lab8\entity\Subscriber.class
+com\app\lab8\controller\BillController.class
+com\app\lab8\Lab8Application.class
+com\app\lab8\repository\BillRepository.class
+com\app\lab8\repository\ServiceRepository.class
+com\app\lab8\controller\SubscriberController.class
+com\app\lab8\config\LocaleConfig.class
+com\app\lab8\controller\ServiceController.class
+com\app\lab8\filter\UrlLoggingFilter.class
+com\app\lab8\entity\Service.class
+com\app\lab8\controller\HomeController.class
+com\app\lab8\entity\Bill.class

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${service.name} + ' - Телефонная станция'">Сервис - Телефонная станция</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Телефонная станция</h1>
+            <p class="subtitle">Информация о сервисе</p>
+        </header>
+
+        <nav class="menu">
+            <ul>
+                <li><a th:href="@{/home}">Главная</a></li>
+                <li><a th:href="@{/services/available}">Доступные сервисы</a></li>
+                <li th:if="${session.user != null and session.user.role.name() == 'USER' or session.user.role.name() == 'ADMIN'}">
+                    <a th:href="@{/services}">Все сервисы</a>
+                </li>
+                <li th:if="${session.user != null and session.user.role.name() == 'ADMIN'}">
+                    <a th:href="@{/services/create}">Добавить сервис</a>
+                </li>
+                <li th:if="${session.user == null or session.user.role.name() == 'GUEST'}">
+                    <a th:href="@{/login}">Вход</a>
+                </li>
+                <li th:if="${session.user != null and session.user.role.name() != 'GUEST'}">
+                    <span class="user-info">Пользователь: <strong th:text="${session.user.username}">user</strong></span>
+                </li>
+                <li th:if="${session.user != null and session.user.role.name() != 'GUEST'}">
+                    <a th:href="@{/logout}">Выход</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main>
+            <div th:if="${service != null}" class="service-detail">
+                <div class="detail-header">
+                    <h2 th:text="${service.name}">Название сервиса</h2>
+                    <span th:if="${service.available}" class="badge badge-success">Доступен</span>
+                    <span th:unless="${service.available}" class="badge badge-danger">Недоступен</span>
+                </div>
+                
+                <div class="detail-content">
+                    <div class="detail-item">
+                        <label>ID:</label>
+                        <span th:text="${service.id}">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Описание:</label>
+                        <p th:text="${service.description}">Описание отсутствует</p>
+                    </div>
+                    <div class="detail-item">
+                        <label>Цена:</label>
+                        <span class="price" th:text="${#numbers.formatDecimal(service.price, 1, 2)} + ' руб.'">0.00 руб.</span>
+                    </div>
+                </div>
+
+                <div class="detail-actions">
+                    <a th:href="@{/services/available}" class="btn btn-secondary">Вернуться к списку</a>
+                    <a th:if="${session.user != null and session.user.role.name() == 'USER' or session.user.role.name() == 'ADMIN'}" 
+                       th:href="@{/services}" class="btn btn-info">Все сервисы</a>
+                </div>
+            </div>
+
+            <div th:if="${service == null}" class="empty-state">
+                <p>Сервис не найден</p>
+                <a th:href="@{/services/available}" class="btn btn-secondary">Вернуться к списку</a>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Телефонная станция. Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+</html>
+

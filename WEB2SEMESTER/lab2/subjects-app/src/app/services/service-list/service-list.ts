@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { FirestoreService, Service } from '../../services/firestore.service';
-import { Observable } from 'rxjs';
+import { ServiceApiService, Service } from '../service';
+import { Observable, catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-service-list',
@@ -16,9 +16,14 @@ export class ServiceListComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private firestoreService: FirestoreService
+    private serviceApi: ServiceApiService
   ) {
-    this.services$ = this.firestoreService.getServices();
+    this.services$ = this.serviceApi.getAll().pipe(
+      catchError(err => {
+        console.error('Failed to load services via HTTP:', err);
+        return of([]);
+      })
+    );
   }
 
   ngOnInit() { }

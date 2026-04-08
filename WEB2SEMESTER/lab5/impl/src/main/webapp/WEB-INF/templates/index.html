@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Телефонная станция - Главная</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Телефонная станция</h1>
+            <p class="subtitle">Система управления доступными сервисами</p>
+        </header>
+
+        <nav class="menu">
+            <ul>
+                <li><a th:href="@{/}">Главная</a></li>
+                <li><a th:href="@{/services}">Все сервисы</a></li>
+                <li><a th:href="@{/services/available}">Доступные сервисы</a></li>
+                <li><a th:href="@{/services/create}">Добавить сервис</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section class="info-section">
+                <h2>О системе</h2>
+                <p>
+                    Данная система предназначена для управления списком доступных сервисов телефонной станции.
+                    Вы можете просматривать все доступные сервисы, добавлять новые и управлять существующими.
+                </p>
+                
+                <h3>Возможности системы:</h3>
+                <ul class="features">
+                    <li>Просмотр полного списка сервисов</li>
+                    <li>Фильтрация доступных сервисов</li>
+                    <li>Добавление новых сервисов</li>
+                    <li>Просмотр детальной информации о сервисе</li>
+                    <li>Управление статусом доступности сервисов</li>
+                </ul>
+            </section>
+
+            <section class="stats-section">
+                <h2>Статистика</h2>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Посещений в этой сессии:</span>
+                        <span class="stat-value" th:text="${session.visitCount}">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Последний визит:</span>
+                        <span class="stat-value" th:text="${session.lastVisit != null ? #dates.format(session.lastVisit, 'dd.MM.yyyy HH:mm') : '-'}">-</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Телефонная станция. Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+</html>
+

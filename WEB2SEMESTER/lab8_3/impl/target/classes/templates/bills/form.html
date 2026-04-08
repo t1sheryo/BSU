@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${currentLocale}">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{bills.form.title}">Счет</title>
+</head>
+<body>
+<h1 th:text="#{bills.form.new}">Новый счет</h1>
+
+<p><a th:href="@{/bills}" th:text="#{bills.form.back}">Назад</a></p>
+
+<p>
+    <a th:href="@{/bills/new(lang='ru')}" th:text="#{lang.ru}">Русский</a>
+    <a th:href="@{/bills/new(lang='en')}" th:text="#{lang.en}">English</a>
+    <a th:href="@{/bills/new(lang='de')}" th:text="#{lang.de}">Deutsch</a>
+</p>
+
+<form th:action="@{/bills}" method="post">
+    <div>
+        <label th:text="#{bills.form.subscriber}">Абонент</label>
+        <select name="subscriberId" required>
+            <option value="" disabled selected th:text="#{bills.form.subscriber.select}">-- выбрать --</option>
+            <option th:each="s : ${subscribers}"
+                    th:value="${s.id}"
+                    th:text="${s.firstName + ' ' + s.lastName + ' (' + s.phoneNumber + ')'}"></option>
+        </select>
+    </div>
+
+    <div>
+        <label th:text="#{bills.form.amount}">Сумма</label>
+        <input type="number" step="0.01" name="amount" required>
+    </div>
+
+    <div>
+        <label th:text="#{bills.form.dueDate}">Срок оплаты (dueDate)</label>
+        <input type="datetime-local" name="dueDate">
+    </div>
+
+    <div>
+        <button type="submit" th:text="#{bills.form.save}">Сохранить</button>
+    </div>
+</form>
+
+</body>
+</html>

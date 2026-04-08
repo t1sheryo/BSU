@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${currentLocale}">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{page.title}">DemoSpring</title>
+</head>
+<body>
+<h1 th:text="#{page.heading}">DemoSpring (Телефонная станция)</h1>
+
+<p>
+    <a th:href="@{/(lang='ru')}" th:text="#{lang.ru}">Русский</a>
+    <a th:href="@{/(lang='en')}" th:text="#{lang.en}">English</a>
+    <a th:href="@{/(lang='de')}" th:text="#{lang.de}">Deutsch</a>
+</p>
+
+<div th:if="${message}">
+    <p th:text="${message}"></p>
+</div>
+
+<div>
+    <p>DEBUG: currentLocale=<span th:text="${currentLocale}"></span>, requestLang=<span th:text="${requestLang}"></span></p>
+</div>
+
+<ul>
+    <li><a th:href="@{/subscribers}" th:text="#{nav.subscribers}">Абоненты</a></li>
+    <li><a th:href="@{/services}" th:text="#{nav.services}">Услуги</a></li>
+    <li><a th:href="@{/bills}" th:text="#{nav.bills}">Счета</a></li>
+</ul>
+
+</body>
+</html>
